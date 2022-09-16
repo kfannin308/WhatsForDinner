@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "WhatsForDinner"
+  "defaultProject": "WhatsForDinner",
+  "cli": {
+    "analytics": "e1bd94dd-e4a7-4bf9-9ee5-9ca820c5884f"
+  }
 }
