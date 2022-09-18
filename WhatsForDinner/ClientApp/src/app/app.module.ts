@@ -42,6 +42,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
       { path: 'favorites', component: FavoritesComponent },
       { path: 'user-profile', component: UserProfileComponent },
       { path: 'shopping-list', component: ShoppingListComponent },
+      { path: 'recipe-details', component: RecipeDetailsComponent },
     ])
   ],
   providers: [],
