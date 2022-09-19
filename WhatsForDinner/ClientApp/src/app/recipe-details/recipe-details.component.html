@@ -1,1 +1,19 @@
 <p>recipe-details works!</p>
+<h1>Donut Details</h1>
+
+
+<h3>Title: {{loadedDetails.title}}</h3>
+<p>Ready in Minutes: {{loadedDetails.readyInMinutes}}</p>
+<p>Servings: {{loadedDetails.servings}}</p>
+<p>Source: {{loadedDetails.sourceUrl}}</p>
+<p>Cuisine: {{loadedDetails.cuisines}}</p>
+<p>Dish Type: {{loadedDetails.dishTypes}}</p>
+<p>Summary: {{loadedDetails.summary}}</p>
+
+
+<p><img src="{{loadedDetails.image}}" height="200" width="200"></p>
+<br />
+<button class="btn btn-primary" routerLink="/"> Back to List</button>
+<br />
+<br />
+<button class="btn btn-primary" routerLink="/cart"> View Shopping List</button>

@@ -1,1 +1,83 @@
-<p>search-recipes works!</p>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2 align="center"><u><b>Search Recipes</b></u></h2>
+
+
+  <form action="/action_page.php">
+    <b>Cuisine (choose one):</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="american">
+    <label for="american">American</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="mexican">
+    <label for="mexican">Mexican</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="chinese">
+    <label for="chinese">Chinese</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="italian">
+    <label for="italian">Italian</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="german">
+    <label for="german">German</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="thai">
+    <label for="thai">Thai</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="irish">
+    <label for="irish">Irish</label>&nbsp;&nbsp;
+
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+    <label for="maxReadyTime (minutes)"><b>Max Ready Time:</b></label>
+    <input type="text" [(ngModel)]="maxReadyTime" name="maxReadyTime" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)=" getListwithFilter(myType,myWordSearch,myCuisine,maxReadyTime,maxCalories)">Search</button>
+
+    <br /><br />
+    <b>Meal Type (choose one):</b>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myType" name="myType" value="maincourse">
+    <label for="maincourse">Main Course</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myType" name="myType" value="sidedish">
+    <label for="sidedish">Side Dish</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myType" name="myType" value="appetizer">
+    <label for="appetizer">Appetizer</label>&nbsp; &nbsp;
+    <input type="radio" [(ngModel)]="myType" name="myType" value="dessert">
+    <label for="dessert">Dessert</label>&nbsp; &nbsp;
+    <input type="radio" [(ngModel)]="myType" name="myType" value="snack">
+    <label for="snack">Snack</label>&nbsp; &nbsp;
+    <input type="radio" [(ngModel)]="myType" name="myType" value="breakfast">
+    <label for="breakfast">Breakfast</label>&nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+
+    <label for="maxCalories"><b>Max Calories:</b></label>
+    <input type="text" [(ngModel)]="maxCalories" name="maxCalories" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="getRandomRecipes()">Get Random Recipes</button>
+  </form>
+  <br />
+
+  <label for="wordSearch"><b>Find Recipes by Word: </b> </label>
+  <input [(ngModel)]="myWordSearch">
+  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+
+  <button (click)="clearRecipeList()">Clear Recipes List</button>
+
+  <br /><br />
+  <hr style="height:3px; color:black;" />
+
+  <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
+                   [title]=currLoadedRecipe.title
+                   [id]=currLoadedRecipe.id
+                   [image]=currLoadedRecipe.image>
+  </app-recipe-list>
+
+ 
+
+
+</body>
+</html>
