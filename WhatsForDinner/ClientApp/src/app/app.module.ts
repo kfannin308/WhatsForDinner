@@ -47,7 +47,7 @@ import { RegisterComponent } from './register/register.component';
       { path: 'user-profile', component: UserProfileComponent },
       { path: 'shopping-list', component: ShoppingListComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent },
       { path: 'recipe-details', component: RecipeDetailsComponent },
     ])
   ],
