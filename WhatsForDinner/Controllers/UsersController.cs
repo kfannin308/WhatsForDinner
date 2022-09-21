@@ -20,7 +20,7 @@ namespace WhatsForDinner.Controllers
         public Users TestMethod()
         {
             Users users = new Users();
-            users.userId = 1;
+            users.userID = 1;
             users.email = "dominionsucks@gmail.com";
             users.firstName = "Dominion";
             users.lastName = "Burch";

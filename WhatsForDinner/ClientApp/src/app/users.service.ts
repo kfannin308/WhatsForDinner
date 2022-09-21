@@ -13,7 +13,7 @@ export class UsersService {
   private storedUserInfo: Users | any;
 
   public GetInfoFromDB() {
-    let apiURL: string = "https://localhost:44418/Users/test" + ".json";
+    let apiURL: string = "https://localhost:44418/users/test" + ".json";
     this.httpClient.get<Users>(apiURL).subscribe((gotData) => {
       this.storedUserInfo = gotData;
       this.newUsersAvailableEvent.emit(this.storedUserInfo);
