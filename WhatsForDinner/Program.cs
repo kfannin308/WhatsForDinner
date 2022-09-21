@@ -35,14 +35,14 @@ namespace WhatsForDinner
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             app.UseRouting();
 
-            app.MapControllers();
-            //app.MapControllerRoute(
-            //    name: "default",
-            //    pattern: "{controller}/{action=Index}/{id?}");
+            app.UseAuthorization();
 
-            app.MapFallbackToFile("index.html");
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

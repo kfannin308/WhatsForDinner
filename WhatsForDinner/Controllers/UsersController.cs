@@ -4,10 +4,17 @@ using WhatsForDinner.Models;
 
 namespace WhatsForDinner.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
+    [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly UsersDbContext _usersDbContext;
+
+        public UsersController(UsersDbContext usersDbContext)
+        {
+            _usersDbContext = usersDbContext;
+        }
+
         [HttpGet]
         [Route("test")]
         public Users TestMethod()
