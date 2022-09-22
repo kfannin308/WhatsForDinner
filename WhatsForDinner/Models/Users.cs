@@ -1,8 +1,12 @@
-﻿namespace WhatsForDinner.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhatsForDinner.Models
 {
     public class Users
     {
-        public int userId { get; set; }
+        [Key]
+        public int userID { get; set; }
         public string email { get; set; } = null!;
         public string firstName { get; set; } = null!;
         public string lastName { get; set; } = null!;
