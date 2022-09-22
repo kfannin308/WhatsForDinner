@@ -1,0 +1,9 @@
+.imgs {
+  height: 200px;
+  width: 200px;
+}
+.outline {
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 3px;
+}

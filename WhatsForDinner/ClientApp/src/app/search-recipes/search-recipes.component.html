@@ -27,8 +27,8 @@
 
     <label for="maxReadyTime (minutes)"><b>Max Ready Time:</b></label>
     <input type="text" [(ngModel)]="maxReadyTime" name="maxReadyTime" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button (click)=" getListwithFilter(myType,myWordSearch,myCuisine,maxReadyTime,maxCalories)">Search</button>
-
+    <button (click)=" getListwithFilter(myType,myWordSearch,myCuisine,maxReadyTime,maxCalories)">Search</button>&nbsp;&nbsp;&nbsp;
+    <button (click)="getMockRecipes()">Get Mock Data</button>
     <br /><br />
     <b>Meal Type (choose one):</b>&nbsp;&nbsp;
     <input type="radio" [(ngModel)]="myType" name="myType" value="maincourse">
@@ -69,14 +69,16 @@
 
   <br /><br />
   <hr style="height:3px; color:black;" />
+  <!--div align="right">
+    <app-recipe-details>
 
+    </app-recipe-details>
+  <div-->
   <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
                    [title]=currLoadedRecipe.title
                    [id]=currLoadedRecipe.id
                    [image]=currLoadedRecipe.image>
   </app-recipe-list>
-
- 
 
 
 </body>
