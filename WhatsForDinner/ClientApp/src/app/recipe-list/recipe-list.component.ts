@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
 
 
 @Component({

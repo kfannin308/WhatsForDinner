@@ -1,11 +1,24 @@
-<p style="font-size:larger; font-weight:bold">
 
-  Recipe ID: {{id}} &nbsp; &nbsp; Recipe Title:  {{title}}<br />
+<div class="col-lg-4">
+  <div class="outline">
+   
+        <mat-card>
+          <mat-icon [ngStyle]="{'color':'red'}">favorite_border</mat-icon>&nbsp;&nbsp;
+          <img mat-card-md-image src="{{image}}" class="imgs" alt="Recipe Image" />
 
-  
+
+          <mat-card-footer>
+            <p>
+              <b>{{title}}</b>
+            </p>
+
+            <a href="/recipe-details/">
+              <span>Get Details</span>
+            </a>
+          </mat-card-footer>
+        </mat-card>
  
+</div>
+  </div>
 
-  <a target="_blank" href="/recipe-details/" onclick='assignId()'><img src="{{image}} "height="200" width="200" /></a>
-
-  
 
