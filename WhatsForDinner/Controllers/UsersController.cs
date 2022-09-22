@@ -16,16 +16,17 @@ namespace WhatsForDinner.Controllers
             _usersDbContext = usersDbContext;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("login")]
-        public Users Login(string email, string firstName, string lastName)
+        public Users Login([FromBody] LoginParams _loginParams)
         {
-            Users users = new Users();
-            users.email = email;
-            users.firstName = firstName;
-            users.lastName = lastName;
+            var userLogIn = _usersDbContext.Users.Where(u => u.email == _loginParams.email).FirstOrDefault();
 
-            return users;
+            return userLogIn;
+        }
+        public class LoginParams
+        {
+            public string email;
         }
 
         [HttpGet]
@@ -35,19 +36,30 @@ namespace WhatsForDinner.Controllers
             return _usersDbContext.Users.ToArray();
         }
 
+
         [HttpPost]
         [Route("register")]
-        public void RegisterUser(string email, string firstName, string lastName, int numberToFeed)
+        public void RegisterUser ([FromBody] Users _newUser)
         {
-            Users newUser = new Users();
-            newUser.email = email;
-            newUser.firstName = firstName;
-            newUser.lastName = lastName;
-            newUser.numberToFeed = numberToFeed;
+            var newUser = new RegisterUserParams()
+            {
+                firstName = _newUser.firstName,
+                lastName = _newUser.lastName,
+                email = _newUser.email,
+                numberToFeed = _newUser.numberToFeed
+            };
 
-            _usersDbContext.Users.Add(newUser);
-            _usersDbContext.SaveChanges();
+            _usersDbContext.Users.Add(_newUser);
+            _usersDbContext.SaveChangesAsync();
         }
 
+        public class RegisterUserParams
+        {
+            public string email;
+            public string firstName;
+            public string lastName;
+            public int numberToFeed;
+        }
+            
     }
 }
