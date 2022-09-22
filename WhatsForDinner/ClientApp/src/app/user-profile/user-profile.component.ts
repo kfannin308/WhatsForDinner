@@ -24,6 +24,6 @@ export class UserProfileComponent implements OnInit {
       })
       this.isNewUsersAvailableEventsSubscribed = true;
     }
-    this.thisUserService.GetInfoFromDB();
+    this.newUser = this.thisUserService.GetInfoFromDB();
   }
 }

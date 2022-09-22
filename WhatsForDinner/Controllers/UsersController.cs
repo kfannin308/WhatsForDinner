@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using WhatsForDinner.Models;
 
 namespace WhatsForDinner.Controllers
@@ -16,17 +17,37 @@ namespace WhatsForDinner.Controllers
         }
 
         [HttpGet]
-        [Route("test")]
-        public Users TestMethod()
+        [Route("login")]
+        public Users Login(string email, string firstName, string lastName)
         {
             Users users = new Users();
-            users.userID = 1;
-            users.email = "dominionsucks@gmail.com";
-            users.firstName = "Dominion";
-            users.lastName = "Burch";
-            users.numberToFeed = 1;
-            
+            users.email = email;
+            users.firstName = firstName;
+            users.lastName = lastName;
+
             return users;
         }
+
+        [HttpGet]
+        [Route("test")]
+        public Users[] Test()
+        {
+            return _usersDbContext.Users.ToArray();
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public void RegisterUser(string email, string firstName, string lastName, int numberToFeed)
+        {
+            Users newUser = new Users();
+            newUser.email = email;
+            newUser.firstName = firstName;
+            newUser.lastName = lastName;
+            newUser.numberToFeed = numberToFeed;
+
+            _usersDbContext.Users.Add(newUser);
+            _usersDbContext.SaveChanges();
+        }
+
     }
 }
