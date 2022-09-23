@@ -16,6 +16,13 @@ namespace WhatsForDinner.Controllers
             _usersDbContext = usersDbContext;
         }
 
+        [HttpGet]
+        [Route("test")]
+        public Users[] Test()
+        {
+            return _usersDbContext.Users.ToArray();
+        }
+
         [HttpPost]
         [Route("login")]
         public Users Login([FromBody] LoginParams _loginParams)
@@ -26,14 +33,7 @@ namespace WhatsForDinner.Controllers
         }
         public class LoginParams
         {
-            public string email;
-        }
-
-        [HttpGet]
-        [Route("test")]
-        public Users[] Test()
-        {
-            return _usersDbContext.Users.ToArray();
+            public string email { get; set; }
         }
 
 
@@ -55,11 +55,11 @@ namespace WhatsForDinner.Controllers
 
         public class RegisterUserParams
         {
-            public string email;
-            public string firstName;
-            public string lastName;
-            public int numberToFeed;
+            public string email { get; set;}
+            public string firstName { get; set; }
+            public string lastName { get; set; }
+            public int numberToFeed { get; set; }
         }
-            
+
     }
 }

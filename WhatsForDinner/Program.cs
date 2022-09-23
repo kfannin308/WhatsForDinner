@@ -60,6 +60,9 @@ namespace WhatsForDinner
             //services.AddControllersWithViews();
             services.AddDbContext<UsersDbContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<FavoritesDbContext>(options =>
+                            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
         public void Configure(IApplicationBuilder app)
         {
