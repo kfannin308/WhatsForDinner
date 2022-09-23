@@ -20,9 +20,7 @@ export class RecipeListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public assignID(myId:number) {
-    this.detailId = myId;
-  }
+ 
   
 
 }

@@ -56,7 +56,7 @@ import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
       { path: 'shopping-list', component: ShoppingListComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'recipe-details', component: RecipeDetailsComponent },
+      { path: 'recipe-details/:id', component: RecipeDetailsComponent },
     ]),
     BrowserAnimationsModule
   ],

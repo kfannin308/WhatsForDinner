@@ -38,29 +38,8 @@ export class SearchRecipesComponent implements OnInit {
 
   clearRecipeList() {
     this.loadedRecipes.results = [];
-    /*for (let currElementNo = 0; currElementNo < this.loadedRecipes.results.length; currElementNo++) {
-      delete this.loadedRecipes.results[currElementNo];
-    }*/
     return this.loadedRecipes;
   }
-  /*public getRecipeList() {
-    // The order is important here.  If we subscribe FIRST, we can guarantee we will receive
-    // all data provided by the event.  If we subscribe SECOND, we may not.
-   
-    if (!this.isNewRecipeAvailableEventSubscribed) {
-      console.log("Hit getRecipeLis 1");
-      this.thisRecipesService.newRecipesAvailableEvent.subscribe((gotData) => {
-        for (let currElementNo = 0; currElementNo < gotData.results.length; currElementNo++)
-          this.loadedRecipes.results.push(gotData.results[currElementNo]);
-        console.log("Data arrived!  We got " + gotData.results.length.toString() + " records.");
-      })
-      this.isNewRecipeAvailableEventSubscribed = true;
-    }
-    
-    this.thisRecipesService.GetInfoFromServer();
-  }*/
-  
-
   public getListwithFilter(myType: string, wordSearch: string, cuisine: string, maxReadyTime: number, maxCalories: number) {
     // The order is important here.  If we subscribe FIRST, we can guarantee we will receive
     // all data provided by the event.  If we subscribe SECOND, we may not.
@@ -98,6 +77,7 @@ export class SearchRecipesComponent implements OnInit {
     console.log("maxReadyTime: " + this.maxReadyTime);
     console.log("maxCalories: " + this.maxCalories);
     console.log("FilterString: " + this.filterString);
+    
     this.thisRecipesService.GetListWithFilter(this.filterString);
     this.myType = "";
     this.myCuisine = "";

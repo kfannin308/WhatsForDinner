@@ -20,20 +20,22 @@ export class RecipeDetailsComponent implements OnInit {
  
 
   @Input() public id: number = 0;
-  @Input() public title: string = "";
-  @Input() public readyInMinutes: number = 0;
-  @Input() public servings: number = 0;
-  @Input() public sourceUrl: string = ""
-  @Input() public image: string = ""
-  @Input() public summary: string = "";
-  @Input() public cuisines: string = "";
-  @Input() public dishTypes: string = ""
+ 
 
   ngOnInit(): void {
-    
+   
     let idString: string | null = "";
     idString = this._Activatedroute.snapshot.paramMap.get("id");
+    console.log("onInit: idstring =" + idString);
+    console.log(typeof Number(idString));
     this.id = Number.parseInt(idString!);
+    console.log("onInit: ID =" + this.id);
+    /*
+    if (idString != null) { console.log("Hit Oninit - id = ") + idString; }
+    let myId: number;
+    myId = Number(idString);
+    console.log("idString: " + idString + " myId:" + myId);*/
+    
     
     this.GetDetails();
 
@@ -41,16 +43,16 @@ export class RecipeDetailsComponent implements OnInit {
   }
 
   public GetDetails() {
-    
+    console.log("getDetails Id: " + this.id);
     if (!this.isNewDetailsAvailableEventSubscribed) {
       this.thisRecipesService.newDetailAvailableEvent.subscribe((gotData) => {
         this.loadedDetails = gotData;
       })
       this.isNewDetailsAvailableEventSubscribed = true;
     }
-    console.log("hit GetDetails Id: " + this.id);
+   
     this.thisRecipesService.GetRecipeDetails(this.id);
-
+   
   }
 
 }
