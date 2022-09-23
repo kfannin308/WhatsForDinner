@@ -1,9 +1,13 @@
-﻿namespace WhatsForDinner.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WhatsForDinner.Models
 {
     public class Favorites
     {
-        public int userid { get; set; }
-        public int favoriteid { get; set; }
-        public int recipeid { get; set; }
+        [Key]
+        public int favoriteID { get; set; }
+        public int recipeID { get; set; }
+        public int userID { get; set; }
     }
 }

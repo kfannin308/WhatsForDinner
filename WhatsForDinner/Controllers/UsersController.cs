@@ -17,18 +17,6 @@ namespace WhatsForDinner.Controllers
         }
 
         [HttpGet]
-        [Route("login")]
-        public Users Login(string email, string firstName, string lastName)
-        {
-            Users users = new Users();
-            users.email = email;
-            users.firstName = firstName;
-            users.lastName = lastName;
-
-            return users;
-        }
-
-        [HttpGet]
         [Route("test")]
         public Users[] Test()
         {
@@ -36,17 +24,41 @@ namespace WhatsForDinner.Controllers
         }
 
         [HttpPost]
-        [Route("register")]
-        public void RegisterUser(string email, string firstName, string lastName, int numberToFeed)
+        [Route("login")]
+        public Users Login([FromBody] LoginParams _loginParams)
         {
-            Users newUser = new Users();
-            newUser.email = email;
-            newUser.firstName = firstName;
-            newUser.lastName = lastName;
-            newUser.numberToFeed = numberToFeed;
+            var userLogIn = _usersDbContext.Users.Where(u => u.email == _loginParams.email).FirstOrDefault();
 
-            _usersDbContext.Users.Add(newUser);
-            _usersDbContext.SaveChanges();
+            return userLogIn;
+        }
+        public class LoginParams
+        {
+            public string email { get; set; }
+        }
+
+
+        [HttpPost]
+        [Route("register")]
+        public void RegisterUser ([FromBody] Users _newUser)
+        {
+            var newUser = new RegisterUserParams()
+            {
+                firstName = _newUser.firstName,
+                lastName = _newUser.lastName,
+                email = _newUser.email,
+                numberToFeed = _newUser.numberToFeed
+            };
+
+            _usersDbContext.Users.Add(_newUser);
+            _usersDbContext.SaveChangesAsync();
+        }
+
+        public class RegisterUserParams
+        {
+            public string email { get; set;}
+            public string firstName { get; set; }
+            public string lastName { get; set; }
+            public int numberToFeed { get; set; }
         }
 
     }
