@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable, Input, Output } from '@angular/core';
+import { EventEmitter, Injectable, Input, Output, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 export class UsersService
 {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   @Output() newUsersAvailableEvent = new EventEmitter<Users[]>();
   @Output() newLoginAvailableEvent = new EventEmitter<Users>();
@@ -18,16 +18,18 @@ export class UsersService
 
   public GetInfoFromDB()
   {
-    let apiURL: string = "https://localhost:44418/users/test";
+    let apiURL: string = this.baseUrl + "/users/test";
     this.httpClient.get<Users[]>(apiURL).subscribe((gotData) => {
       this.storedUserInfo = gotData;
       this.newUsersAvailableEvent.emit(this.storedUserInfo);
     })
   }
 
-  public LoginUser(email: string)
+  // + "?=" + email
+
+  public LoginUser()
     {
-    let apiURL: string = "https://localhost:44418/users/login";
+    let apiURL: string = this.baseUrl + "/users/login";
     this.httpClient.get<Users>(apiURL).subscribe((gotData) => {
       this.storedLoginInfo = gotData;
       //this.newLoginAvailableEvent.emit(this.storedLoginInfo);
