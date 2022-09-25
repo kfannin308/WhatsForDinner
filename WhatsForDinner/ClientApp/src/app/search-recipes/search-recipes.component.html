@@ -69,17 +69,29 @@
 
   <br /><br />
   <hr style="height:3px; color:black;" />
-  <!--div align="right">
-    <app-recipe-details>
 
-    </app-recipe-details>
-  <div-->
   <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
                    [title]=currLoadedRecipe.title
                    [id]=currLoadedRecipe.id
                    [image]=currLoadedRecipe.image>
   </app-recipe-list>
+  <!--div align="right">
+    <app-recipe-details>
+      <h1>Recipe Details</h1>
 
+
+      <h3>Title: {{loadedDetails.title}}</h3>
+      <p>Ready in Minutes: {{loadedDetails.readyInMinutes}}</p>
+      <p>Servings: {{loadedDetails.servings}}</p>
+      <p>Source: {{loadedDetails.sourceUrl}}</p>
+      <p>Cuisine: {{loadedDetails.cuisines}}</p>
+      <p>Dish Type: {{loadedDetails.dishTypes}}</p>
+      <p>Summary: {{loadedDetails.summary}}</p>
+
+
+      <p><img src="{{loadedDetails.image}}" height="200" width="200"></p>
+    </app-recipe-details>
+  </div-->
 
 </body>
 </html>

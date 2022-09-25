@@ -1,4 +1,4 @@
-import { Component, OnInit,Input} from '@angular/core';
+import { Component, OnInit,Input, Output} from '@angular/core';
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../recipe.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,6 +20,7 @@ export class RecipeDetailsComponent implements OnInit {
  
 
   @Input() public id: number = 0;
+ /* @Output() public loadedDetails: RecipeDetails = new RecipeDetails(); */
  
 
   ngOnInit(): void {
@@ -29,16 +30,9 @@ export class RecipeDetailsComponent implements OnInit {
     console.log("onInit: idstring =" + idString);
     console.log(typeof Number(idString));
     this.id = Number.parseInt(idString!);
-    console.log("onInit: ID =" + this.id);
-    /*
-    if (idString != null) { console.log("Hit Oninit - id = ") + idString; }
-    let myId: number;
-    myId = Number(idString);
-    console.log("idString: " + idString + " myId:" + myId);*/
-    
+    console.log("onInit: ID =" + this.id);  
     
     this.GetDetails();
-
 
   }
 

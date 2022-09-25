@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 //import { CartService } from '../cart.service';
-import { RecipesService, RecipeInfo, RecipeResults} from '../recipe.service';
+import { RecipesService, RecipeDetails, RecipeInfo, RecipeResults} from '../recipe.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -28,6 +28,8 @@ export class SearchRecipesComponent implements OnInit {
   private filterString: string = "";
   public maxReadyTime: number = 0;
   public maxCalories: number = 0;
+
+  @Input() public loadedDetails: RecipeDetails = new RecipeDetails();
 
   constructor(private thisRecipesService: RecipesService /* private cartService: CartService */) {
   }
@@ -88,7 +90,6 @@ export class SearchRecipesComponent implements OnInit {
   public getRandomRecipes() {
 
     if (!this.isNewRandomRecipeAvailEventSubscribed) {
-      console.log("Hit GetRandomRecipe");
       this.thisRecipesService.newRandomRecipesAvailableEvent.subscribe((gotData) => {
         for (let currElementNo = 0; currElementNo < gotData.results.length; currElementNo++)
           this.loadedRecipes.results.push(gotData.results[currElementNo]);
@@ -96,10 +97,11 @@ export class SearchRecipesComponent implements OnInit {
 
       })
       this.isNewRandomRecipeAvailEventSubscribed = true;
-    }
 
+    }
     this.thisRecipesService.GetListRandom();
   }
+
   public getMockRecipes() {
     if (!this.isNewMockDataAvailEventSubscribed) {
       console.log("Hit getMockRecipes");

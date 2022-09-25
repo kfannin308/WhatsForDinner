@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
+import { IngredientsComponent } from './ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
     RecipeListComponent,
     RecipeDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    IngredientsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -12,9 +12,8 @@
               <b>{{id}}: {{title}}</b>
             </p>
 
-            <a href="/recipe-details/{{id}}">
-              <span>Get Details</span>
-            </a>
+            <a class="nav-link text-dark" [routerLink]="['/recipe-details/' + id]">Get Details</a>
+             
           </mat-card-footer>
         </mat-card>
  

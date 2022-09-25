@@ -18,15 +18,14 @@ export class RecipesService {
   @Output() newMockDataAvailableEvent = new EventEmitter<RecipeResults>();
  
   private storedRecipeInfos: RecipeResults | any;
+  private storedRandomInfos: RecipeInfo | any;
+  private storedSingleRecipe: RecipeDetails | any;
 
-  // private storedRecipeResults: RecipeResults = new RecipeResults;
-  private storedSingleRecipe: RecipeDetails = new RecipeDetails;
-
-   public GetListWithFilter(myFilterString: string) {
+  public GetListWithFilter(myFilterString: string) {
     let apiUrl: string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1528a19c369845658e657d2c1ccbdd87&number=9" + myFilterString;
     console.log("apiUrl:" + apiUrl);
     this.httpClient.get<RecipeResults>(apiUrl).subscribe((gotData) => {
-      this.storedRecipeInfos = gotData;
+      this.storedRecipeInfos = gotData; 
       this.newFilteredRecipesAvailableEvent.emit(this.storedRecipeInfos);
     });
   }
@@ -34,10 +33,13 @@ export class RecipesService {
   public GetListRandom() {
     let apiUrl: string = "https://api.spoonacular.com/recipes/random?apiKey=1528a19c369845658e657d2c1ccbdd87&number=9";
     console.log("apiUrl:" + apiUrl);
-    this.httpClient.get<RecipeResults>(apiUrl).subscribe((gotData) => {
-      this.storedRecipeInfos = gotData;
-      this.newRandomRecipesAvailableEvent.emit(this.storedRecipeInfos);
+    this.httpClient.get<RecipeInfo>(apiUrl).subscribe((gotData) => {
+      this.storedRandomInfos = gotData;
+      console.log("storedRandomInfos:" + this.storedRandomInfos);
+      this.newRandomRecipesAvailableEvent.emit(this.storedRandomInfos);
+      console.log("results: " + this.storedRandomInfos.length);
     });
+    console.log("end of getlistrandom: " );
   }
 
   public id: number = 0;
@@ -52,6 +54,7 @@ export class RecipesService {
       this.newDetailAvailableEvent.emit(this.storedSingleRecipe);
     
     });
+    
   }
   
   public GetMockList() {
@@ -89,11 +92,10 @@ export class RecipeDetails {
   public sourceUrl: string = ""
   public image: string = ""
   public summary: string = "";
-  public extendedIngredients: Ingredients[] = [];
   public cuisines: string = "";
   public dishTypes: string = ""
-
-
+  public extendedIngredients: Ingredients[] = [];
+ /* public extendedIngredients: string = ""; */
 }
 
 export class Ingredients {
@@ -102,6 +104,8 @@ export class Ingredients {
   public name: string = "";
   public amount: number = 0;
   public unit: string = "";
+
+  
 }
 
 
