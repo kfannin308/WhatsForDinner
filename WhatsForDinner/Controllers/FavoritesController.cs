@@ -24,11 +24,11 @@ namespace WhatsForDinner.Controllers
 
         [HttpPost]
         [Route("viewfavorites")]
-        public Favorites ViewFavorites([FromBody] ViewFavoritesParams _viewFav)
+        public List<Favorites> ViewFavorites([FromBody] ViewFavoritesParams viewFavsParams)
         {
-            var userFav = _favoritesDbContext.Favorites.Where(u => u.userID == _viewFav.userID).FirstOrDefault();
+            var userFavs = _favoritesDbContext.Favorites.Where(u => u.userID == viewFavsParams.userID).ToList();
 
-            return userFav;
+            return userFavs;
         }
 
         public class ViewFavoritesParams
