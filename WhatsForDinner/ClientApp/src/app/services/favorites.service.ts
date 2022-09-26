@@ -1,23 +1,26 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, EventEmitter, Input, Output } from '@angular/core';
+import { AppSettings } from '../constants/appsettings';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
+  constructor(private httpClient: HttpClient) {
+    
+  }
 
-  constructor(private httpClient: HttpClient) { }
+  appSettings: AppSettings = new AppSettings();
 
-  @Output() newFavoritesAvailableEvent = new EventEmitter<Favorites>();
+  private storedFavorites: Favorites[] | any;
 
-  private storedFavorites: Favorites | any;
-
-  public GetFavoritesFromDB() {
-    let apiURL: string = "https://localhost:44418/favorites/test" + ".json";
-    this.httpClient.get<Favorites>(apiURL).subscribe((gotData) => {
-      this.storedFavorites = gotData;
-      this.newFavoritesAvailableEvent.emit(this.storedFavorites);
+  public GetFavoritesByUser(userId: string): Favorites[] {
+    let apiURL: string = this.appSettings.baseUrl + "/viewfavorites";
+    this.httpClient.post<Favorites[]>(apiURL, userId).subscribe((favorites: Favorites[]) => {
+      this.storedFavorites = favorites;
+      
     })
+    return this.storedFavorites;
   }
 }
 

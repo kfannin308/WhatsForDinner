@@ -1,1 +1,19 @@
-<p>favorites works!</p>
+
+<div *ngIf="currentUser != null || currentUser != undefined">
+  <h2>Welcome to your favorites {{currentUser.firstName}}!</h2>
+  <div *ngIf="favorites" >
+    <div *ngFor="let favorite of favorites">
+      <h3>Favorite ID: {{favorite.favoriteID}} </h3>
+      <br />
+      <h3>Recipe ID: {{favorite.recipeID}}</h3>
+      <br />
+      <h3>User ID: {{favorite.userID}}</h3>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="currentUser == null || favorites == null">
+  <h3>
+    You have no favorites, look around for something good slacker.
+  </h3>
+</div>
