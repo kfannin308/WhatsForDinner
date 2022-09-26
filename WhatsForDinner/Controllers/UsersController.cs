@@ -28,7 +28,11 @@ namespace WhatsForDinner.Controllers
         public Users Login([FromBody] LoginParams _loginParams)
         {
             var userLogIn = _usersDbContext.Users.Where(u => u.email == _loginParams.email).FirstOrDefault();
-
+            if(userLogIn == null)
+            {
+                return null;
+                //throw new UnauthorizedAccessException();
+            }
             return userLogIn;
         }
         public class LoginParams

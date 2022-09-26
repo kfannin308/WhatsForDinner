@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 //import { CartService } from '../cart.service';
-import { RecipesService, RecipeInfo, RecipeResults} from '../recipe.service';
+import { RecipesService, RecipeInfo, RecipeResults} from '../services/recipe.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';

@@ -1,34 +1,47 @@
 
-<div class ="ui raised segment">
-  <h2 class ="ui header">
-    Register New User</h2>
-    <form [formGroup]="registerUserForm"
-          (ngSubmit)="onSubmit(registerUserForm.value)"
-          class="ui form">
-      <div class ="field">
-        <label for ="email">
-          Email</label>
-          <input type="text"
-                 id="email"
-                 placeholder="email"
-                 formControlName="email" />
-          </div>
-          <div class ="field">
-            <label for ="firstName">
-              First Name</label>
-              <input type="text"
-                     id="firstNameInput"
-                     placeholder="Your First Name"
-                     formControlName="firstName" />
-              </div>
-              <div class ="field">
-                <label for ="lastNameInput">
-                  Last Name</label>
-                  <input type="text"
-                         id="lastName"
-                         placeholder="Your Last Name"
-                         formControlName="lastName" />
-                  </div>
-                  <button type ="submit" class="ui button">Submit</button>
-    </form>
+<div class="ui raised segment">
+  <h2 class="ui header">
+    Register New User
+  </h2>
+  <form [formGroup]="registerUserForm"
+        (ngSubmit)="onSubmit(registerUserForm.value)"
+        class="ui form">
+    <div class="field">
+      <label for="email">
+        Email
+      </label>
+      <input type="text"
+             id="email"
+             placeholder="email"
+             formControlName="email" />
     </div>
+    <div class="field">
+      <label for="firstName">
+        First Name
+      </label>
+      <input type="text"
+             id="firstNameInput"
+             placeholder="Your First Name"
+             formControlName="firstName" />
+    </div>
+    <div class="field">
+      <label for="lastNameInput">
+        Last Name
+      </label>
+      <input type="text"
+             id="lastName"
+             placeholder="Your Last Name"
+             formControlName="lastName" />
+    </div>
+    <div class="field">
+      <label for="numberToFeedInput">
+        Number of Servings
+      </label>
+      <input type="text"
+             id="numberToFeed"
+             placeholder="Number of Servings"
+             formControlName="numberToFeed" />
+    </div>
+    <button type="submit" class="ui button">Submit</button>
+  </form>
+</div>
