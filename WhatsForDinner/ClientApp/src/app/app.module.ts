@@ -21,6 +21,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
+import { UsersService } from './services/users.service';
+import { AppSettingsService } from './services/appsettings.service';
+import { FavoritesService } from './services/favorites.service';
+import { RecipesService } from './services/recipe.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,7 @@ import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
     ]),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [UsersService,AppSettingsService,FavoritesService,RecipesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

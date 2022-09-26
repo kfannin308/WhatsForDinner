@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Users, UsersService } from 'src/app/users.service'
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'oidc-client';
+import { Users, UsersService } from '../services/users.service';
+
 
 @Component({
   selector: 'app-user-profile',
@@ -9,30 +11,25 @@ import { Users, UsersService } from 'src/app/users.service'
 })
 export class UserProfileComponent /*implements OnInit*/ {
 
-  constructor(private thisUserService: UsersService) { }
+  constructor(private userService: UsersService, private _router: Router) { }
 
-  public newUsers: Users = new Users();
+  currentUser: Users | undefined;
 
   ngOnInit(): void {
-    this.displayUser();
+    this.userService.currentUser.subscribe((user: Users | null) => {
+      if (user != null)
+        this.currentUser = user;
+    })
+    this.isUserLoggedIn();
   }
 
-  /*
-  for(let currElementNo = 0; currElementNo <gotData.count; currElementNo++)
-this.loadedDonuts.results.push(gotData.results[currElementNo]);
-*/
-
   private isNewUsersAvailableEventsSubscribed: boolean = false;
-  public displayUser() {
+  public isUserLoggedIn() {
     console.log("UserProfileComponent.displayUser()");
     if (!this.isNewUsersAvailableEventsSubscribed) {
-      this.thisUserService.newLoginAvailableEvent.subscribe((gotData) => {
-       // for (let current = 0; current < gotData.count; current++)
-         // this.newUser.push(gotData);
-        this.newUsers = gotData;
-      })
+      
       this.isNewUsersAvailableEventsSubscribed = true;
     }
-    this.thisUserService.LoginUser();
+    //this._router.navigateByUrl("/login")
   }
 }

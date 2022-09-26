@@ -4,11 +4,13 @@
 <br />
 <br />
 <br />-->
-<h2>Welcome!</h2>
-<br />
-<br />
-<h3>Name: {{newUsers.firstName}} {{newUsers.lastName}}</h3>
-<br />
-<h3>Email: {{newUsers.email}}</h3>
-<br />
-<h3>User ID: {{newUsers.userID}}</h3>
+<div *ngIf="currentUser != null || currentUser != undefined">
+  <h2>Welcome!</h2>
+  <br />
+  <br />
+  <h3>Name: {{currentUser.firstName}} {{currentUser.lastName}}</h3>
+  <br />
+  <h3>Email: {{currentUser.email}}</h3>
+  <br />
+  <h3>User ID: {{currentUser.userID}}</h3>
+</div>
