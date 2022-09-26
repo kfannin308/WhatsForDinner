@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -20,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggle, MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 
@@ -33,12 +33,12 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
     SearchRecipesComponent,
     FavoritesComponent,
     UserProfileComponent,
-    ShoppingListComponent,
     RecipeListComponent,
     RecipeDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    IngredientsComponent
+    IngredientsComponent,
+    ShoppingListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,6 +48,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
     MatCardModule,
     MatIconModule,
     MatGridListModule,
+    MatButtonToggleModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -55,7 +56,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
       { path: 'search-recipes', component: SearchRecipesComponent },
       { path: 'favorites', component: FavoritesComponent },
       { path: 'user-profile', component: UserProfileComponent },
-      { path: 'shopping-list', component: ShoppingListComponent },
+      { path: 'shop-list', component: ShoppingListComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'recipe-details/:id', component: RecipeDetailsComponent },

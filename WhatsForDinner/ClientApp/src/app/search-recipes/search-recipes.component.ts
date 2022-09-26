@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
-//import { CartService } from '../cart.service';
+import { ShoppingListService, ShoppingList } from '../shopping-list.service';
 import { RecipesService, RecipeDetails, RecipeInfo, RecipeResults} from '../recipe.service';
 
 import { BrowserModule } from '@angular/platform-browser';

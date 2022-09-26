@@ -21,5 +21,6 @@ export class IngredientsComponent implements OnInit {
   ngOnInit(): void {
 
   }
+ 
 
 }
