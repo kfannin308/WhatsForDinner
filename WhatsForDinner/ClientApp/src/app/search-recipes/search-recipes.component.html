@@ -10,8 +10,8 @@
     <b>Cuisine (choose one):</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="american">
     <label for="american">American</label>&nbsp;&nbsp;
-    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="mexican">
-    <label for="mexican">Mexican</label>&nbsp;&nbsp;
+    <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="southern">
+    <label for="southern">Southern</label>&nbsp;&nbsp;
     <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="chinese">
     <label for="chinese">Chinese</label>&nbsp;&nbsp;
     <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="italian">
@@ -69,16 +69,13 @@
 
   <br /><br />
   <hr style="height:3px; color:black;" />
-  <!--div align="right">
-    <app-recipe-details>
-
-    </app-recipe-details>
-  <div-->
   <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
                    [title]=currLoadedRecipe.title
                    [id]=currLoadedRecipe.id
                    [image]=currLoadedRecipe.image>
   </app-recipe-list>
+
+  
 
 
 </body>

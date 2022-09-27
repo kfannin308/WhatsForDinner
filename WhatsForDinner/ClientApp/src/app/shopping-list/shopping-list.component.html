@@ -1,1 +1,22 @@
-<p>shopping-list works!</p>
+<h2>~ ~ ~  Shopping List  ~ ~ ~</h2>
+
+
+<div>
+  <table cellpadding="15">
+    <tr>
+      <th style="text-align:center">Item</th>
+      <th style="text-align:center">Amount</th>
+      <th style="text-align:center">Unit of Measure</th>
+    </tr>
+
+    <tr class="cart-item" *ngFor="let item of items">
+
+      <td style="text-align:center">{{ item.name }} </td>
+
+      <td><button class="button1" (click)="removeFromList(items, item)"><b>Remove</b></button></td>
+
+    </tr>
+  </table>
+</div>
+
+  Total Items: {{this.items.length}}

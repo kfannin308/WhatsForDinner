@@ -2,21 +2,31 @@
 <div class="col-lg-4">
   <div class="outline">
    
-        <mat-card>
-          <mat-icon [ngStyle]="{'color':'red'}">favorite_border</mat-icon>&nbsp;&nbsp;
-          <img mat-card-md-image src="{{image}}" class="imgs" alt="Recipe Image" />
+    <mat-grid-list cols="1" rowHeight="2:1">
 
+      <mat-grid-tile>
+        <!--mat-icon [ngStyle]="{'color':'red'}">favorite_border</!--mat-icon-->&nbsp;&nbsp;
+        <!--mat-icon [ngStyle]="{'color':'red'}">favorite</!--mat-icon-->&nbsp;&nbsp;
 
-          <mat-card-footer>
-            <p>
-              <b>{{title}}</b>
-            </p>
+        <img mat-card-md-image src="{{image}}" class="imgs" alt="Recipe Image" />
 
-            <a href="/recipe-details/">
-              <span>Get Details</span>
-            </a>
-          </mat-card-footer>
-        </mat-card>
+        <mat-card-footer>
+          <p>
+            <b> {{title}}</b>
+          </p>
+          <button class="btn btn-primary" [routerLink]="['/recipe-details/' + id]">Get Details</button>&nbsp;
+          <button class="btn btn-primary" (click)="addToList(loadedIngredients)">AddToList</button> <br /><br />
+
+          <!--mat-button-toggle color="primary" #toggleBtn>
+            Favorite
+          </mat-button-toggle-->
+
+          <!--mat-icon [ngStyle]="{'color':'red'}" *ngIf="toggleBtn.checked">favorite</!--mat-icon>
+          <mat-icon [ngStyle]="{'color':'red'}" *ngIf="!toggleBtn.checked">favorite_border</mat-icon-->
+
+        </mat-card-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
  
 </div>
   </div>

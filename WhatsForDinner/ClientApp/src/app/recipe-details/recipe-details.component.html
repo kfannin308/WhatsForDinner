@@ -7,13 +7,27 @@
 <p>Servings: {{loadedDetails.servings}}</p>
 <p>Source: {{loadedDetails.sourceUrl}}</p>
 <p>Cuisine: {{loadedDetails.cuisines}}</p>
-<p>Dish Type: {{loadedDetails.dishTypes}}</p>
-<p>Summary: {{loadedDetails.summary}}</p>
-
-
+<h3>Title: {{loadedDetails.title}}</h3>
+<p>
+  <b>Ready in Minutes: </b> {{loadedDetails.readyInMinutes}} &nbsp;&nbsp;
+  <b>Servings: </b>{{loadedDetails.servings}}
+</p>
+<p>
+  <b>Cuisine: </b>{{loadedDetails.cuisines}} &nbsp;&nbsp;
+  <b>Dish Type: </b>{{loadedDetails.dishTypes}}
+</p>
+<p><b>Summary: </b> {{loadedDetails.summary}}</p>
 <p><img src="{{loadedDetails.image}}" height="200" width="200"></p>
-<br />
-<button class="btn btn-primary" routerLink="/"> Back to List</button>
-<br />
-<br />
-<button class="btn btn-primary" routerLink="/cart"> View Shopping List</button>
+
+<p> <a href="{{loadedDetails.sourceUrl}}" target="_blank"> Click Here for Source </a><p>
+<p><b>Ingredients:</b></p>
+<app-ingredients *ngFor="let currIngredients of loadedDetails.extendedIngredients"
+                 [id]=currIngredients.id
+                 [aisle]=currIngredients.aisle
+                 [name]=currIngredients.name
+                 [amount]=currIngredients.amount
+                 [unit]=currIngredients.unit>
+
+</app-ingredients>
+<button class="btn btn-primary" routerLink="/search-recipes"> Back to List</button>
+<button class="btn btn-primary" routerLink="/shopping-list"> View Shopping List</button>

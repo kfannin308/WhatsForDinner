@@ -1,4 +1,4 @@
-import { Component, OnInit,Input} from '@angular/core';
+import { Component, OnInit,Input, Output} from '@angular/core';
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -33,15 +33,17 @@ export class RecipeDetailsComponent implements OnInit {
     
     let idString: string | null = "";
     idString = this._Activatedroute.snapshot.paramMap.get("id");
+    console.log("onInit: idstring =" + idString);
+    console.log(typeof Number(idString));
     this.id = Number.parseInt(idString!);
-    
+    console.log("onInit: ID =" + this.id);
     this.GetDetails();
 
 
   }
 
   public GetDetails() {
-    
+    console.log("getDetails Id: " + this.id);
     if (!this.isNewDetailsAvailableEventSubscribed) {
       this.thisRecipesService.newDetailAvailableEvent.subscribe((gotData) => {
         this.loadedDetails = gotData;
