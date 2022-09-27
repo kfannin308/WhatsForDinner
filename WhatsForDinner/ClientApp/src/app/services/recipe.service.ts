@@ -25,9 +25,11 @@ export class RecipesService {
 
 
   private storedRecipeInfos: RecipeResults | any;
+  private storedRandomInfos: RecipeInfo | any;
+  private storedSingleRecipe: RecipeDetails | any;
 
   // private storedRecipeResults: RecipeResults = new RecipeResults;
-  private storedSingleRecipe: RecipeDetails = new RecipeDetails;
+  
 
  /*
   public GetInfoFromServer() {
@@ -51,17 +53,23 @@ export class RecipesService {
   public GetListRandom() {
     let apiUrl: string = "https://api.spoonacular.com/recipes/random?apiKey=1528a19c369845658e657d2c1ccbdd87&number=9";
     console.log("apiUrl:" + apiUrl);
-    this.httpClient.get<RecipeResults>(apiUrl).subscribe((gotData) => {
-      this.storedRecipeInfos = gotData;
-      this.newRandomRecipesAvailableEvent.emit(this.storedRecipeInfos);
+    this.httpClient.get<RecipeInfo>(apiUrl).subscribe((gotData) => {
+      this.storedRandomInfos = gotData;
+      console.log("storedRandomInfos:" + this.storedRandomInfos);
+      this.newRandomRecipesAvailableEvent.emit(this.storedRandomInfos);
+      console.log("results: " + this.storedRandomInfos.length);
     });
+    console.log("end of getlistrandom: ");
   }
 
   public id: number = 0;
   
   
   public GetRecipeDetails(id: number) {
-    let apiURL: string = "https://api.spoonacular.com/recipes/716429/information?apiKey=1528a19c369845658e657d2c1ccbdd87&includeNutrition=true" ;
+    let thisId = id.toString();
+    /*let apiURL: string = "https://api.spoonacular.com/recipes/716429/information?apiKey=1528a19c369845658e657d2c1ccbdd87&includeNutrition=true" ;*/
+    let apiURL: string = "https://api.spoonacular.com/recipes/" + thisId + "/information?apiKey=1528a19c369845658e657d2c1ccbdd87&includeNutrition=true";
+    console.log("getDetails url:" + apiURL);
     this.httpClient.get<RecipeDetails>(apiURL).subscribe((gotData) => {
       this.storedSingleRecipe = gotData;
       this.newDetailAvailableEvent.emit(this.storedSingleRecipe);
@@ -87,55 +95,8 @@ export class RecipeResults {
   public count: number = 0;
   public results: RecipeInfo[] = [];
 }
-/*
-export class MockRecipeService {
-  private resultsList: RecipeResults[] =
-    [
-      {
-        count: 2,
-        results: [{
-          id: 1,
-          title: "Mushroom Carbonara",
-          image: "https://www.eatthis.com/wp-content/uploads/sites/4/2020/08/weldon-owen-gluten-free-cover.jpg?quality=82&strip=1&w=970",
-          imageType: "jpeg"
-        }]
-      },
-      {
-        count: 2,
-        results: [{
-          id: 2,
-          title: "Salad",
-          image: "https://picjumbo.com/wp-content/uploads/korean-bibimbap-flatlay-1080x696.jpg",
-          imageType: "jpeg"
-        }]
-      
-      }
-      
-    ];
-  /*
-  public getMockData(): RecipeResults[] {
-    return this.resultsList;
-  }
-  constructor() { }
-}*/
-  /*
-  private recipeList: RecipeInfo[] =
-   [
-        {
-          id: 1,
-          title: "Mushroom Carbonara",
-          image: "https://www.eatthis.com/wp-content/uploads/sites/4/2020/08/weldon-owen-gluten-free-cover.jpg?quality=82&strip=1&w=970",
-          imageType: "jpeg"
-        },
-        {
-          id: 2,
-          title: "Salad",
-          image: "https://picjumbo.com/wp-content/uploads/korean-bibimbap-flatlay-1080x696.jpg",
-          imageType: "jpeg"
-        }
 
-    ];
-    */
+    
  
 export class RecipeInfo {
   public id: number = 0;

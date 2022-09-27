@@ -25,6 +25,8 @@ import { UsersService } from './services/users.service';
 import { AppSettingsService } from './services/appsettings.service';
 import { FavoritesService } from './services/favorites.service';
 import { RecipesService } from './services/recipe.service';
+/*import { MatButtonToggle, MatButtonToggleModule } from '@angular/material/button-toggle'; */
+import { IngredientsComponent } from './ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { RecipesService } from './services/recipe.service';
     RecipeListComponent,
     RecipeDetailsComponent,
     LoginComponent,
+    IngredientsComponent,
     RegisterComponent
   ],
   imports: [
@@ -50,6 +53,7 @@ import { RecipesService } from './services/recipe.service';
     MatCardModule,
     MatIconModule,
     MatGridListModule,
+   /* MatButtonToggle, */
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -61,6 +65,7 @@ import { RecipesService } from './services/recipe.service';
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'recipe-details', component: RecipeDetailsComponent },
+      { path: 'recipe-details/:id', component: RecipeDetailsComponent },
     ]),
     BrowserAnimationsModule
   ],

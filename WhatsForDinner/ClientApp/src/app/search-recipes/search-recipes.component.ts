@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 //import { CartService } from '../cart.service';
-import { RecipesService, RecipeInfo, RecipeResults} from '../services/recipe.service';
+
+import { ShoppingListService, ShoppingList } from '../shopping-list.service';
+import { RecipesService, RecipeDetails, RecipeInfo, RecipeResults } from '../services/recipe.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -29,6 +31,8 @@ export class SearchRecipesComponent implements OnInit {
   public maxReadyTime: number = 0;
   public maxCalories: number = 0;
 
+  @Input() public loadedDetails: RecipeDetails = new RecipeDetails();
+
   constructor(private thisRecipesService: RecipesService /* private cartService: CartService */) {
   }
 
@@ -38,27 +42,10 @@ export class SearchRecipesComponent implements OnInit {
 
   clearRecipeList() {
     this.loadedRecipes.results = [];
-    /*for (let currElementNo = 0; currElementNo < this.loadedRecipes.results.length; currElementNo++) {
-      delete this.loadedRecipes.results[currElementNo];
-    }*/
+    
     return this.loadedRecipes;
   }
-  /*public getRecipeList() {
-    // The order is important here.  If we subscribe FIRST, we can guarantee we will receive
-    // all data provided by the event.  If we subscribe SECOND, we may not.
-   
-    if (!this.isNewRecipeAvailableEventSubscribed) {
-      console.log("Hit getRecipeLis 1");
-      this.thisRecipesService.newRecipesAvailableEvent.subscribe((gotData) => {
-        for (let currElementNo = 0; currElementNo < gotData.results.length; currElementNo++)
-          this.loadedRecipes.results.push(gotData.results[currElementNo]);
-        console.log("Data arrived!  We got " + gotData.results.length.toString() + " records.");
-      })
-      this.isNewRecipeAvailableEventSubscribed = true;
-    }
-    
-    this.thisRecipesService.GetInfoFromServer();
-  }*/
+  
   
 
   public getListwithFilter(myType: string, wordSearch: string, cuisine: string, maxReadyTime: number, maxCalories: number) {
