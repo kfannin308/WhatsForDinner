@@ -27,8 +27,8 @@
 
     <label for="maxReadyTime (minutes)"><b>Max Ready Time:</b></label>
     <input type="text" [(ngModel)]="maxReadyTime" name="maxReadyTime" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button (click)=" getListwithFilter(myType,myWordSearch,myCuisine,maxReadyTime,maxCalories)">Search</button>&nbsp;&nbsp;&nbsp;
-    <button (click)="getMockRecipes()">Get Mock Data</button>
+    <button (click)=" getListwithFilter(myType,myWordSearch,myCuisine,maxReadyTime,maxCalories)">Search for Recipes</button>&nbsp;&nbsp;&nbsp;
+    <!--button (click)="getMockRecipes()">Get Mock Data</button-->
     <br /><br />
     <b>Meal Type (choose one):</b>&nbsp;&nbsp;
     <input type="radio" [(ngModel)]="myType" name="myType" value="maincourse">
@@ -47,7 +47,11 @@
 
     <label for="maxCalories"><b>Max Calories:</b></label>
     <input type="text" [(ngModel)]="maxCalories" name="maxCalories" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button (click)="getRandomRecipes()">Get Random Recipes</button>
+    <button (click)="clearRecipeList()">
+      Clear Recipes List
+    </button>
+
+    <!--button (click)="getRandomRecipes()">Get Random Recipes</button-->
   </form>
   <br />
 
@@ -63,9 +67,7 @@
   &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
   &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-
-
-  <button (click)="clearRecipeList()">Clear Recipes List</button>
+ 
 
   <br /><br />
   <hr style="height:3px; color:black;" />
@@ -75,7 +77,7 @@
                    [image]=currLoadedRecipe.image>
   </app-recipe-list>
 
-  
+
 
 
 </body>
