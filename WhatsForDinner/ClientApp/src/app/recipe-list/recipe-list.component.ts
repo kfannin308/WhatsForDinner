@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
-import { ShoppingListService, ShoppingList } from '../shopping-list.service';
+import { ShoppingListService, ShoppingList} from '../shopping-list.service';
 import { Ingredients } from '../services/recipe.service';
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
-/*import { MatButtonToggle, MatButtonToggleModule } from '@angular/material/button-toggle';*/
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-recipe-list',
