@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -25,8 +24,9 @@ import { UsersService } from './services/users.service';
 import { AppSettingsService } from './services/appsettings.service';
 import { FavoritesService } from './services/favorites.service';
 import { RecipesService } from './services/recipe.service';
-/*import { MatButtonToggle, MatButtonToggleModule } from '@angular/material/button-toggle'; */
+import { MatButtonToggleModule } from '@angular/material/button-toggle'; 
 import { IngredientsComponent } from './ingredients/ingredients.component';
+import { ShoppingListService, ShoppingList } from './shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,8 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
     MatCardModule,
     MatIconModule,
     MatGridListModule,
-   /* MatButtonToggle, */
+    /*MatButtonToggle, */
+    MatButtonToggleModule, 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -69,7 +70,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
     ]),
     BrowserAnimationsModule
   ],
-  providers: [UsersService,AppSettingsService,FavoritesService,RecipesService],
+  providers: [UsersService,AppSettingsService,FavoritesService,RecipesService,ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

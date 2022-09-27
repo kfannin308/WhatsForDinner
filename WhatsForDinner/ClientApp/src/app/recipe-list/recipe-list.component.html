@@ -17,12 +17,12 @@
           <button class="btn btn-primary" [routerLink]="['/recipe-details/' + id]">Get Details</button>&nbsp;
           <button class="btn btn-primary" (click)="addToList(loadedIngredients)">AddToList</button> <br /><br />
 
-          <!--mat-button-toggle color="primary" #toggleBtn>
+          <mat-button-toggle color="primary" #toggleBtn>
             Favorite
-          </mat-button-toggle-->
+          </mat-button-toggle>
 
-          <!--mat-icon [ngStyle]="{'color':'red'}" *ngIf="toggleBtn.checked">favorite</!--mat-icon>
-          <mat-icon [ngStyle]="{'color':'red'}" *ngIf="!toggleBtn.checked">favorite_border</mat-icon-->
+          <mat-icon [ngStyle]="{'color':'red'}" *ngIf="toggleBtn.checked">favorite</mat-icon>
+          <mat-icon [ngStyle]="{'color':'red'}" *ngIf="!toggleBtn.checked">favorite_border</mat-icon>
 
         </mat-card-footer>
       </mat-grid-tile>
