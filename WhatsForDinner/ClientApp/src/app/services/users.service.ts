@@ -15,24 +15,24 @@ export class UsersService {
   @Output() newUsersAvailableEvent = new EventEmitter<Users[]>();
   @Output() newLoginAvailableEvent = new EventEmitter<Users>();
   @Output() loginChangeEvent = new EventEmitter<UsersLoginEventArgs>();
+  // instance variables below here. 
   appSettings: AppSettings = new AppSettings();
   baseUrl: string = this.appSettings.baseUrl;
-  //private baseUrl: string = "https://localhost:44418";
-  //private storedUserInfo: Users[] = [];
-  //private storedLoginInfo: Users = new Users;
+  // currentUserStream is an observable used to publish/broadcast a current user to a subscriber.
+  currentUserStream: Subject<Users | null> = new BehaviorSubject<Users | null>(null);// way to store an stream current user.
+  // instance variables end.
 
-  currentUser: Subject<Users | null> = new BehaviorSubject<Users | null>(null);// way to store an stream current user.
   public setCurrentUser(newUser: Users): void {
     if (newUser != null) {
-      this.currentUser.next(newUser);
+      this.currentUserStream.next(newUser);
     }
     else {
-      this.currentUser.next(null);
+      this.currentUserStream.next(null);
     }
   }
 
   public removeCurrentUser(): void {
-    this.currentUser.next(null);
+    this.currentUserStream.next(null);
   }
 
   public RegisterUser(user: RegisterUserArgs) {

@@ -16,7 +16,7 @@ export class UserProfileComponent /*implements OnInit*/ {
   currentUser: Users | undefined;
 
   ngOnInit(): void {
-    this.userService.currentUser.subscribe((user: Users | null) => {
+    this.userService.currentUserStream.subscribe((user: Users | null) => {
       if (user != null)
         this.currentUser = user;
     })

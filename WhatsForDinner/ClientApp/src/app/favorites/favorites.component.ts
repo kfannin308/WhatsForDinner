@@ -20,7 +20,7 @@ export class FavoritesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this._userService.currentUser.subscribe((user: Users | null) => {
+    this._userService.currentUserStream.subscribe((user: Users | null) => {
       if (user != null)
         this.currentUser = user;
     })
