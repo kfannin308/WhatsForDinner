@@ -4,7 +4,8 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { ShoppingListService, ShoppingList } from '../shopping-list.service';
 import { RecipesService, RecipeDetails, RecipeInfo, RecipeResults } from '../services/recipe.service';
-
+import { FavoritesService } from 'src/app/services/favorites.service'
+import { UsersService } from '../services/users.service'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -33,7 +34,7 @@ export class SearchRecipesComponent implements OnInit {
 
   @Input() public loadedDetails: RecipeDetails = new RecipeDetails();
 
-  constructor(private thisRecipesService: RecipesService /* private cartService: CartService */) {
+  constructor(private thisRecipesService: RecipesService, private favoritesService: FavoritesService, private usersService: UsersService) {
   }
 
   ngOnInit(): void {

@@ -18,15 +18,23 @@ export class UsersService {
   // instance variables below here. 
   appSettings: AppSettings = new AppSettings();
   baseUrl: string = this.appSettings.baseUrl;
+  activeUser: Users;
   // currentUserStream is an observable used to publish/broadcast a current user to a subscriber.
   currentUserStream: Subject<Users | null> = new BehaviorSubject<Users | null>(null);// way to store an stream current user.
   // instance variables end.
 
+  public GetUserID(): number {
+    return this.activeUser.userID;
+    //return 5;
+  }
+
   public setCurrentUser(newUser: Users): void {
     if (newUser != null) {
+      this.activeUser = newUser;
       this.currentUserStream.next(newUser);
     }
     else {
+      this.activeUser = null;
       this.currentUserStream.next(null);
     }
   }
