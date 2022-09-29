@@ -29,4 +29,7 @@ export class LoginComponent implements OnInit {
     this._router.navigateByUrl("/user-profile")
   }
 
+  logOut() {
+    this._userService.Logout();
+  }
 }

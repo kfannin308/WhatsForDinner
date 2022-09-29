@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit()  {
   }
-
+  // the value is taken from the form builder in Angular
   onSubmit(value: RegisterUserArgs): void {
     this._userService.RegisterUser(value);
     this._router.navigateByUrl("/")
