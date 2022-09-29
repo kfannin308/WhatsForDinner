@@ -12,12 +12,12 @@
 
         <mat-card-footer>
           <p>
-            <b> {{title}}</b>
+            <b> {{id}} {{title}}</b>
           </p>
           <button class="btn btn-primary" [routerLink]="['/recipe-details/' + id]">Get Details</button>&nbsp;
           <button class="btn btn-primary" (click)="addToList(loadedIngredients)">AddToList</button> <br /><br />
 
-          <mat-button-toggle color="primary" #toggleBtn>
+          <mat-button-toggle color="primary" #toggleBtn (click)="addToFavorites(id)">
             Favorite
           </mat-button-toggle>
 

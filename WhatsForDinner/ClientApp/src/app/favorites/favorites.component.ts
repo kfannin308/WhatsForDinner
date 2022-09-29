@@ -19,13 +19,13 @@ export class FavoritesComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this._userService.currentUserStream.subscribe((user: Users | null) => {
       if (user != null)
         this.currentUser = user;
     })
     if (this.currentUser != null && this.currentUser.userID != null) {
-      this.favorites = this._favoriteService.GetFavoritesByUser(this.currentUser?.userID.toString());
+      this.favorites = await this._favoriteService.GetFavoritesByUser(this.currentUser?.userID);
 
     }
   }

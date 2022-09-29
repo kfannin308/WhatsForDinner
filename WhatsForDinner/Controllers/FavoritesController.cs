@@ -22,11 +22,11 @@ namespace WhatsForDinner.Controllers
             return _favoritesDbContext.Favorites.ToArray();
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("viewfavorites")]
-        public List<Favorites> ViewFavorites([FromBody] ViewFavoritesParams viewFavsParams)
+        public List<Favorites> ViewFavorites(int userID)
         {
-            var userFavs = _favoritesDbContext.Favorites.Where(u => u.userID == viewFavsParams.userID).ToList();
+            var userFavs = _favoritesDbContext.Favorites.Where(u => u.userID == userID).ToList();
 
             return userFavs;
         }
@@ -42,7 +42,6 @@ namespace WhatsForDinner.Controllers
         {
             var addFav = new AddFavoritesParams()
             {
-                favoriteID = _addFavorite.favoriteID,
                 recipeID = _addFavorite.recipeID,
                 userID = _addFavorite.userID
             };
@@ -53,7 +52,6 @@ namespace WhatsForDinner.Controllers
 
         public class AddFavoritesParams
         {
-            public int favoriteID { get; set; }
             public int recipeID { get; set; }
             public int userID { get; set; }
 
