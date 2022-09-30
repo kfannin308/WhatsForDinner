@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
 import { ShoppingListService, ShoppingList} from '../shopping-list.service';
 import { Ingredients } from '../services/recipe.service';
-import { FavoritesService } from 'src/app/services/favorites.service'
+import { Favorites, FavoritesService } from 'src/app/services/favorites.service'
 import { UsersService } from '../services/users.service'
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -17,6 +17,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 export class RecipeListComponent implements OnInit {
   public detailId: number = 0;
   public currUserID: number = 0;
+  public userFavs: Favorites[] | any;
 
   constructor(private thisRecipesService: RecipesService, private shoppingListService: ShoppingListService, private usersService: UsersService, private favoritesService: FavoritesService) { }
   @Input() public id: number = 0;
@@ -28,8 +29,9 @@ export class RecipeListComponent implements OnInit {
 
   @Input() public loadedIngredients: Ingredients = new Ingredients();
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.currUserID = this.usersService.GetUserID();
+    this.userFavs = await this.favoritesService.GetFavoritesByUser(this.currUserID);
   }
 
   public addToList(ingredient: Ingredients) {
@@ -39,8 +41,35 @@ export class RecipeListComponent implements OnInit {
     console.log('Details Add - Cart Items Total: ' + this.shoppingListService.items.length.toString());
   }
 
-  public addToFavorites(_recipeID: number) {
-    this.favoritesService.AddToFavorites(this.currUserID, _recipeID);
-    console.log("works! " + _recipeID + " " + this.currUserID);
+  //public addToFavorites(_recipeID: number) {
+  //  this.favoritesService.AddToFavorites(this.currUserID, _recipeID);
+  //  console.log("works! " + _recipeID + " " + this.currUserID);
+  //}
+
+  //public deleteFromFavorites(_recipeID: number) {
+  //  this.favoritesService.DeleteFromFavorites(this.currUserID, _recipeID);
+  //  console.log("works!");
+  //}
+
+  public updateFavorites(_recipeID: number, isChecked: boolean) {
+    if (isChecked == true) {
+      this.favoritesService.AddToFavorites(this.currUserID, _recipeID);
+    }
+    else {
+      this.favoritesService.DeleteFromFavorites(this.currUserID, _recipeID);
+    }
+  }
+
+  public isInFavorites(_recipeID: number): boolean {
+    let recipeFavorited = false;
+    for (var i = 0; i < this.userFavs.length; i++)
+    {
+      if (this.userFavs[i].recipeID == _recipeID) {
+        recipeFavorited = true;
+        break;
+      }
+    }
+    console.log('Works!' + _recipeID + recipeFavorited);
+    return recipeFavorited;
   }
 }

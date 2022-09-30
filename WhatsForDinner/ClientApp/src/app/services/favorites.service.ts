@@ -30,6 +30,14 @@ export class FavoritesService {
     let apiURL: string = this.baseUrl + "favorites/addtofavorites";
     this.httpClient.post(apiURL, userFavs).subscribe();
   }
+
+  public DeleteFromFavorites(userID: number, recipeID: number) {
+    let userFavs: FavoritesArgs = new FavoritesArgs();
+    userFavs.recipeID = recipeID;
+    userFavs.userID = userID;
+    let apiURL: string = this.baseUrl + "favorites/deletefavorites";
+    this.httpClient.post(apiURL, userFavs).subscribe();
+  }
 }
 
 

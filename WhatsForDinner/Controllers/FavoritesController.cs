@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using WhatsForDinner.Models;
 
 namespace WhatsForDinner.Controllers
@@ -40,21 +41,50 @@ namespace WhatsForDinner.Controllers
         [Route("addtofavorites")]
         public void AddToFavorites([FromBody] Favorites _addFavorite)
         {
-            var addFav = new AddFavoritesParams()
+            var addFav = new FavoritesParams()
             {
                 recipeID = _addFavorite.recipeID,
                 userID = _addFavorite.userID
             };
 
-            _favoritesDbContext.Favorites.Add(_addFavorite);
-            _favoritesDbContext.SaveChangesAsync();
+            var userFavs = ViewFavorites(_addFavorite.userID).ToArray();
+            var found = false;
+
+            foreach (var fav in userFavs)
+            {
+                if (fav.recipeID == _addFavorite.recipeID)
+                {
+                    found = true;
+                    if (found == true)
+                    {
+                        return;
+                    }
+                }
+            }
+            if (!found)
+            {
+                _favoritesDbContext.Favorites.Add(_addFavorite);
+                _favoritesDbContext.SaveChangesAsync();
+            }
         }
 
-        public class AddFavoritesParams
+        public class FavoritesParams
         {
             public int recipeID { get; set; }
             public int userID { get; set; }
 
+        }
+
+        [HttpPost]
+        [Route("deletefavorites")]
+        public void DeleteFromFavorites([FromBody] Favorites _deleteFav)
+        {
+            var savedFavs = _favoritesDbContext.Favorites.Where(f => (f.userID == _deleteFav.userID && f.recipeID == _deleteFav.recipeID)).FirstOrDefault();
+            if (savedFavs != null)
+            {
+                _favoritesDbContext.Favorites.Remove(savedFavs);
+                _favoritesDbContext.SaveChanges();
+            }
         }
     }
 }
