@@ -1,6 +1,7 @@
 import { Component, OnInit,Input, Output} from '@angular/core';
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
 import { ActivatedRoute } from '@angular/router';
+import { ShoppingListService, ShoppingList } from '../shopping-list.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  constructor(private _Activatedroute: ActivatedRoute, private thisRecipesService: RecipesService) {
+  constructor(private _Activatedroute: ActivatedRoute, private thisRecipesService: RecipesService,
+              private thisShoppingListService: ShoppingListService ) {
 
   }
 
@@ -54,5 +56,12 @@ export class RecipeDetailsComponent implements OnInit {
     this.thisRecipesService.GetRecipeDetails(this.id);
 
   }
+  public loadIngredients() {
+    for (let curr of this.loadedDetails.extendedIngredients) {
+    
+      
+      this.thisShoppingListService.addToList(curr); 
 
+    }
+  }
 }
