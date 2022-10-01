@@ -8,12 +8,10 @@
   border-width: 3px;
 }
 
-.flex-container{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    width: 30%;
-    border: 2px solid black;
-    justify-content: center;
-    flex-wrap: wrap;
+.flexcont {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  border: 5px solid red;
+  flex-wrap: wrap;
 }

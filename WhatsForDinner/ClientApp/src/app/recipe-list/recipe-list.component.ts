@@ -9,9 +9,11 @@ import { UsersService } from '../services/users.service'
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
+
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
+  
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
@@ -71,7 +73,7 @@ export class RecipeListComponent implements OnInit {
         break;
       }
     }
-    console.log('Works!' + _recipeID + recipeFavorited);
+    
     return recipeFavorited;
   }
 }

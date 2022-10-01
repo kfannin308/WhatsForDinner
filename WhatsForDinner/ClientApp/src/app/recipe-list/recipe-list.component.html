@@ -1,27 +1,29 @@
-
-
-  <div class="flex-container">
-   
-    <img src="{{image}}" class="imgs" alt="Recipe Image" />
-
-        
-          <p>
-            <b> {{title}}</b>
-          </p>
-          <button class="btn btn-primary" [routerLink]="['/recipe-details/' + id]">Get Details</button>&nbsp;
-         
-          <br /><br />
-
-          <mat-button-toggle color="primary" #toggleBtn (click)="updateFavorites(id, toggleBtn.checked)" [checked]="isInFavorites(id)">
-            Favorite
-          </mat-button-toggle>
-
-          <mat-icon [ngStyle]="{'color':'red'}" *ngIf="toggleBtn.checked">favorite</mat-icon>
-          <mat-icon [ngStyle]="{'color':'red'}" *ngIf="!toggleBtn.checked">favorite_border</mat-icon>
-
-        
+ <span> 
+  {{title}}
+</span> 
+<!--div class="d-flex flex-row justify-content-end "-->
  
-</div>
+ 
+  <!--img src="{{image}}" class="imgs" alt="Recipe Image" /-->
+
+
+  <!--p>
+    <b> {{title}}</b>
+  </!--p>
+  <!--button class="btn btn-primary" [routerLink]="['/recipe-details/' + id]">Get Details</!--button>&nbsp;
+
+  <br /><br />
+
+  <mat-button-toggle color="primary" #toggleBtn (click)="updateFavorites(id, toggleBtn.checked)" [checked]="isInFavorites(id)">
+    Favorite
+  </mat-button-toggle>
+
+  <mat-icon [ngStyle]="{'color':'red'}" *ngIf="toggleBtn.checked">favorite</mat-icon>
+  <mat-icon [ngStyle]="{'color':'red'}" *ngIf="!toggleBtn.checked">favorite_border</mat-icon-->
+
+
+
+<!--/div-->
   
 
 
