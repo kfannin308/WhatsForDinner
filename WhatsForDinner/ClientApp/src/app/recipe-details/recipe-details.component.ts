@@ -58,10 +58,11 @@ export class RecipeDetailsComponent implements OnInit {
   }
   public loadIngredients() {
     for (let curr of this.loadedDetails.extendedIngredients) {
-    
-      
-      this.thisShoppingListService.addToList(curr); 
+
+      this.thisShoppingListService.addToList(curr);
 
     }
+      window.alert('Your ingredients have been added to the Shopping List! Total Items in Shopping List:' +
+        this.thisShoppingListService.items.length.toString());
   }
 }

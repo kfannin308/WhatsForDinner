@@ -50,4 +50,6 @@ export interface Favorites {
   favoriteID: number;
   recipeID: number;
   userID: number;
+  title: string;
+  image: string;
 }

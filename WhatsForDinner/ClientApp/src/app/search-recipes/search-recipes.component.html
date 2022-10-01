@@ -67,15 +67,19 @@
   &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
   &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
- 
+
 
   <br /><br />
   <hr style="height:3px; color:black;" />
-  <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
-                   [title]=currLoadedRecipe.title
-                   [id]=currLoadedRecipe.id
-                   [image]=currLoadedRecipe.image>
-  </app-recipe-list>
+
+  <div class="d-flex flex-row flex-wrap" >
+    <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
+                     [title]=currLoadedRecipe.title
+                     [id]=currLoadedRecipe.id
+                     [image]=currLoadedRecipe.image>
+
+    </app-recipe-list>
+  </div>
 
 
 

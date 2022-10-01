@@ -9,9 +9,11 @@ import { UsersService } from '../services/users.service'
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
+
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
+  
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
@@ -64,14 +66,14 @@ export class RecipeListComponent implements OnInit {
 
   public isInFavorites(_recipeID: number): boolean {
     let recipeFavorited = false;
-    for (var i = 0; i < this.userFavs.length; i++)
+    for (var i = 0; i < this.userFavs?.length; i++)
     {
       if (this.userFavs[i].recipeID == _recipeID) {
         recipeFavorited = true;
         break;
       }
     }
-    console.log('Works!' + _recipeID + recipeFavorited);
+    
     return recipeFavorited;
   }
 }

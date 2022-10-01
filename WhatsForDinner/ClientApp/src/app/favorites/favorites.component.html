@@ -1,7 +1,20 @@
+<!--div *ngIf="currentUser != null || currentUser != undefined">
+  <h2>Welcome to your favorites {{currentUser.firstName}}!</h2>
 
+  <div class="d-flex flex-row flex-wrap">
+
+    <app-recipe-list *ngFor =" let favorite of favorites"
+
+                     [title]=favorite.title
+                     [id]=favorite.recipeID
+                     [image]=favorite.image>
+
+    </app-recipe-list>
+  </div>
+  </div-->
 <div *ngIf="currentUser != null || currentUser != undefined">
   <h2>Welcome to your favorites {{currentUser.firstName}}!</h2>
-  <div *ngIf="favorites" >
+  <div *ngIf="favorites">
     <div *ngFor="let favorite of favorites">
       <h3>Favorite ID: {{favorite.favoriteID}} </h3>
       <br />
