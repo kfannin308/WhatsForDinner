@@ -66,7 +66,7 @@ export class RecipeListComponent implements OnInit {
 
   public isInFavorites(_recipeID: number): boolean {
     let recipeFavorited = false;
-    for (var i = 0; i < this.userFavs.length; i++)
+    for (var i = 0; i < this.userFavs?.length; i++)
     {
       if (this.userFavs[i].recipeID == _recipeID) {
         recipeFavorited = true;

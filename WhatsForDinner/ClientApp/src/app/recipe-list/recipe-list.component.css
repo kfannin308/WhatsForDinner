@@ -1,6 +1,7 @@
 .imgs {
   height: 200px;
   width: 200px;
+  align-content: center;
 }
 .outline {
   border-radius: 6px;
@@ -14,4 +15,21 @@
   width: 30%;
   border: 5px solid red;
   flex-wrap: wrap;
+}
+.card {
+
+  max-width: 275px;
+  max-height: 350px;
+  align-items:center;
+  margin: 25px;
+  align-content: center;
+  border: 5px solid gray;
+}
+.card-text{
+    word-wrap:break-word;
+    word-break: normal;
+    hyphens: auto;
+    overflow-wrap: anywhere;
+    align-content:center;
+    
 }

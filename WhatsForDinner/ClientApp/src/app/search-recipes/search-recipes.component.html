@@ -72,7 +72,7 @@
   <br /><br />
   <hr style="height:3px; color:black;" />
 
-  <div class="d-flex flex-row" >
+  <div class="d-flex flex-row flex-wrap" >
     <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
                      [title]=currLoadedRecipe.title
                      [id]=currLoadedRecipe.id
