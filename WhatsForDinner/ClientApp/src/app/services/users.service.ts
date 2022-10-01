@@ -23,10 +23,10 @@ export class UsersService {
   currentUserStream: Subject<Users | null> = new BehaviorSubject<Users | null>(null);// way to store an stream current user.
   // instance variables end.
 
-  public GetUserID(): number {
-    return this.activeUser.userID;
+  //public GetUserID(): number {
+    //return this.activeUser.userID;
     //return 5;
-  }
+ // }
 
   public setCurrentUser(newUser: Users): void {
     if (newUser != null) {

@@ -5,7 +5,7 @@ import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
 import { ShoppingListService, ShoppingList} from '../shopping-list.service';
 import { Ingredients } from '../services/recipe.service';
 import { Favorites, FavoritesService } from 'src/app/services/favorites.service'
-import { UsersService } from '../services/users.service'
+import { Users, UsersService } from '../services/users.service'
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
@@ -18,10 +18,12 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 })
 export class RecipeListComponent implements OnInit {
   public detailId: number = 0;
-  public currUserID: number = 0;
   public userFavs: Favorites[] | any;
-
-  constructor(private thisRecipesService: RecipesService, private shoppingListService: ShoppingListService, private usersService: UsersService, private favoritesService: FavoritesService) { }
+  currUser: Users;
+  _userService: UsersService;
+  constructor(private thisRecipesService: RecipesService, private shoppingListService: ShoppingListService, private usersService: UsersService, private favoritesService: FavoritesService) {
+    this._userService = usersService;
+  }
   @Input() public id: number = 0;
   @Input() public title: string = "";
   @Input() public image: string = "";
@@ -32,8 +34,11 @@ export class RecipeListComponent implements OnInit {
   @Input() public loadedIngredients: Ingredients = new Ingredients();
 
   async ngOnInit() {
-    this.currUserID = this.usersService.GetUserID();
-    this.userFavs = await this.favoritesService.GetFavoritesByUser(this.currUserID);
+    this._userService.currentUserStream.subscribe((user: Users | null) => {
+      if (user != null)
+        this.currUser = user;
+    })
+    this.userFavs = await this.favoritesService.GetFavoritesByUser(this.currUser.userID);
   }
 
  
@@ -57,10 +62,10 @@ export class RecipeListComponent implements OnInit {
 
   public updateFavorites(_recipeID: number, isChecked: boolean) {
     if (isChecked == true) {
-      this.favoritesService.AddToFavorites(this.currUserID, _recipeID);
+      this.favoritesService.AddToFavorites(this.currUser.userID, _recipeID);
     }
     else {
-      this.favoritesService.DeleteFromFavorites(this.currUserID, _recipeID);
+      this.favoritesService.DeleteFromFavorites(this.currUser.userID, _recipeID);
     }
   }
 

@@ -55,10 +55,11 @@ export class SearchRecipesComponent implements OnInit {
 
     console.log("filters: " + this.myType + "  " + this.myWordSearch + "  " + this.myCuisine + " " + this.maxReadyTime + " " + this.maxCalories);
     if (!this.isNewFilteredRecipeAvailEventSubscribed) {
-      this.thisRecipesService.newFilteredRecipesAvailableEvent.subscribe((gotData) => {
-        for (let currElementNo = 0; currElementNo < gotData.results.length; currElementNo++)
-          this.loadedRecipes.results.push(gotData.results[currElementNo]);
-        console.log("Data arrived!  We got " + gotData.results.length.toString() + " records.");
+      this.thisRecipesService.newFilteredRecipesAvailableEvent.subscribe((recipes) => {
+        this.loadedRecipes = recipes;
+//for (let currElementNo = 0; currElementNo < recipes.results.length; currElementNo++)
+         // this.loadedRecipes.results.push(recipes.results[currElementNo]);
+        //console.log("Data arrived!  We got " + recipes.results.length.toString() + " records.");
 
       })
       this.isNewFilteredRecipeAvailEventSubscribed = true;
