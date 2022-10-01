@@ -12,7 +12,20 @@ export class ShoppingListService {
   items: Ingredients[] = [];
 
   addToList(ingredient: Ingredients) {
-    this.items.push(ingredient);
+    let found = false;
+    for (let item of this.items) {
+        if (item.id == ingredient.id) {
+          found = true;
+          console.log("shoppinglist: " + ingredient.id + " " + item.id + " " + item.name + found.toString());
+          if (found == true) {
+            item.amount += ingredient.amount;
+          }
+        }
+    }
+    if (!found) {
+      this.items.push(ingredient);
+    }
+    
   }
   getItems() {
     console.log("hit getItems");

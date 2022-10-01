@@ -1,12 +1,6 @@
 
 <h1>Recipe Details</h1>
 
-
-<h3>Title: {{loadedDetails.title}}</h3>
-<p>Ready in Minutes: {{loadedDetails.readyInMinutes}}</p>
-<p>Servings: {{loadedDetails.servings}}</p>
-<p>Source: {{loadedDetails.sourceUrl}}</p>
-<p>Cuisine: {{loadedDetails.cuisines}}</p>
 <h3>Title: {{loadedDetails.title}}</h3>
 <p>
   <b>Ready in Minutes: </b> {{loadedDetails.readyInMinutes}} &nbsp;&nbsp;
@@ -19,8 +13,13 @@
 <p><b>Summary: </b> {{loadedDetails.summary}}</p>
 <p><img src="{{loadedDetails.image}}" height="200" width="200"></p>
 
-<p> <a href="{{loadedDetails.sourceUrl}}" target="_blank"> Click Here for Source </a><p>
-<p><b>Ingredients:</b></p>
+<p> <a href="{{loadedDetails.sourceUrl}}" target="_blank"> Click Here for Source </a></p>
+
+<h2>
+  <u><b>Ingredients</b></u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-primary" (click)="loadIngredients()">Add Ingredients To Shopping List</button>
+</h2>
+
 <app-ingredients *ngFor="let currIngredients of loadedDetails.extendedIngredients"
                  [id]=currIngredients.id
                  [aisle]=currIngredients.aisle
@@ -29,5 +28,5 @@
                  [unit]=currIngredients.unit>
 
 </app-ingredients>
-<button class="btn btn-primary" routerLink="/search-recipes"> Back to List</button>
+<button class="btn btn-primary" routerLink="/search-recipes"> Back to Search</button>&nbsp;&nbsp;&nbsp;
 <button class="btn btn-primary" routerLink="/shopping-list"> View Shopping List</button>
