@@ -9,5 +9,7 @@ namespace WhatsForDinner.Models
         public int favoriteID { get; set; }
         public int recipeID { get; set; }
         public int userID { get; set; }
+        public string Title { get; set; }
+        public string Image { get; set; }
     }
 }
