@@ -15,7 +15,7 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void {
     this.getItems();
   }
-  public findItem(myId:number) {
+  public findItem(myId: number) {
 
   }
   public getItems() {
@@ -25,18 +25,39 @@ export class ShoppingListComponent implements OnInit {
     console.log('Shopping List Items Total: ' + this.shoppingListService.items.length.toString());
   }
   public removeFromList(items: Ingredients[], item: Ingredients) {
-    //console.log("hit removeFromCart code");
+
     console.log("hit removeFromList code " + item.name);
-    /*this.items = this.cartService.getItems();
+    this.items = this.shoppingListService.getItems();
     for (var i = 0; i < items.length; i++) {
       console.log("hit loop" + i.toString()) + " " + item.id.toString();
       if (items[i].id == item.id) {
         items.splice(i, 1);
-        window.alert('Your donut has been removed from the cart!');
+        window.alert('Your item has been removed from the shopping list!');
         console.log("Idx: " + i.toString());
         return;
-      }*/
-
+      }
+    }
+  }
+  public printPage() {
+    console.log("hit print");
+    //Get the print and remove buttons and put it into a variable
+    var printButton = document.getElementById("printpagebutton");
+    var removeButton = document.getElementById("removebutton");
+    //Set the buttons visibility to 'hidden'
+    printButton.style.visibility = 'hidden';
+    removeButton.style.visibility = 'hidden';
+    //Print the page content
+    window.print();
+    //Set the print button to 'visible' again
+    //[Delete this line if you want it to stay hidden after printing]
+    printButton.style.visibility = 'visible';
+    removeButton.style.visibility = 'visible';
   }
 
+  
+
+
 }
+
+
+

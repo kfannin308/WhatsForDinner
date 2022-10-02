@@ -41,10 +41,13 @@ namespace WhatsForDinner.Controllers
         [Route("addtofavorites")]
         public void AddToFavorites([FromBody] Favorites _addFavorite)
         {
+            /*favgrid changes */
             var addFav = new FavoritesParams()
             {
                 recipeID = _addFavorite.recipeID,
-                userID = _addFavorite.userID
+                userID = _addFavorite.userID /*,
+                title = _addFavorite.title,
+                image = _addFavorite.image */
             };
 
             var userFavs = ViewFavorites(_addFavorite.userID).ToArray();
@@ -72,7 +75,9 @@ namespace WhatsForDinner.Controllers
         {
             public int recipeID { get; set; }
             public int userID { get; set; }
-
+            /* favgrid changes
+            public string title { get; set }
+            public string image { get; set }*/
         }
 
         [HttpPost]
