@@ -59,7 +59,7 @@ export class RecipeListComponent implements OnInit {
   //  this.favoritesService.DeleteFromFavorites(this.currUserID, _recipeID);
   //  console.log("works!");
   //}
-
+ 
   public updateFavorites(_recipeID: number, isChecked: boolean) {
     if (isChecked == true) {
       this.favoritesService.AddToFavorites(this.currUser.userID, _recipeID, this.title, this.image);

@@ -1,0 +1,11 @@
+.buttonPrint {
+    float:inline-end
+}
+.buttonRemove{
+    
+}
+@media printe{
+    .noprint {
+        display: none;
+    }
+}

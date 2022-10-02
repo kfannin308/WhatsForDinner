@@ -42,7 +42,7 @@ export class RecipesService {
   }*/
 
   public GetListWithFilter(myFilterString: string) {
-    let apiUrl: string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1528a19c369845658e657d2c1ccbdd87&number=9" + myFilterString;
+    let apiUrl: string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1528a19c369845658e657d2c1ccbdd87&number=40" + myFilterString;
     console.log("apiUrl:" + apiUrl);
     this.httpClient.get<RecipeResults>(apiUrl).subscribe((gotData) => {
       this.storedRecipeInfos = gotData;
@@ -67,7 +67,6 @@ export class RecipesService {
   
   public GetRecipeDetails(id: number) {
     let thisId = id.toString();
-    /*let apiURL: string = "https://api.spoonacular.com/recipes/716429/information?apiKey=1528a19c369845658e657d2c1ccbdd87&includeNutrition=true" ;*/
     let apiURL: string = "https://api.spoonacular.com/recipes/" + thisId + "/information?apiKey=1528a19c369845658e657d2c1ccbdd87&includeNutrition=true";
     console.log("getDetails url:" + apiURL);
     this.httpClient.get<RecipeDetails>(apiURL).subscribe((gotData) => {

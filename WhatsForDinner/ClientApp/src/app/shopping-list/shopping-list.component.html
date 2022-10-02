@@ -1,25 +1,35 @@
-<h1>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     ~ ~ ~ Shopping List ~ ~ ~ </h1>
+<h1 align="center">    ~ ~ ~ Shopping List ~ ~ ~ </h1>
+&nbsp;&nbsp;&nbsp;
 
-
-<div>
-  <table style="text-align:center "cellpadding="15">
+<!--input class="noprint" id="printpagebutton" type="button" value="Print Shopping List" onclick="window.print();return false;" /-->
+<div align=center>
+<input class="d-print-none" id="printpagebutton" type="button" value="Print Shopping List!"
+       onclick="window.print();return false;" />
+</div>
+<div align="center">
+  
+  <table style="text-align:center " cellpadding="15">
     <tr>
       <th style="text-align:center"><u>Item</u></th>
       <th style="text-align:center"><u>Amount</u></th>
       <th style="text-align:center"><u>Aisle</u></th>
-      <th style="text-align:center"><u>Remove</u></th>
-    </tr>
+      <th class="d-print-none" style="text-align:center"><u>Remove</u></th>
 
+
+    </tr>
     <tr class="cart-item" *ngFor="let item of items">
 
       <td style="text-align:center">{{ item.name }}</td>
       <td style="text-align:center">{{item.amount}} {{item.unit}}</td>
       <td style="text-align:center">{{item.aisle}} </td>
 
-      <td><button class="button1" (click)="removeFromList(items, item)"><b>Remove</b></button></td>
+      <td><button class="d-print-none" id="removebutton" (click)="removeFromList(items, item)"><b>Remove</b></button></td>
 
     </tr>
   </table>
 </div>
 
-  Total Items: {{this.items.length}}
+<p align="center">
+Total Items: {{this.items.length}}
+</p>
+
