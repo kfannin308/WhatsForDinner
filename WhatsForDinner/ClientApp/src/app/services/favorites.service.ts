@@ -22,14 +22,11 @@ export class FavoritesService {
     let favorites: Favorites[] | undefined = await localThis.httpClient.get<Favorites[]>(apiURL).toPromise();
     return favorites;
   }
-  /*favgrid changes*/
-  public AddToFavorites(userID: number, recipeID: number/*, recipeTitle: string, recipeImage: string*/) {
+  
+  public AddToFavorites(userID: number, recipeID: number) {
     let userFavs: FavoritesArgs = new FavoritesArgs();
     userFavs.recipeID = recipeID;
     userFavs.userID = userID;
-    /*favgrid changes*/
-   /* userFavs.title = recipeTitle;
-    userFavs.image = recipeImage;*/
     let apiURL: string = this.baseUrl + "favorites/addtofavorites";
     this.httpClient.post(apiURL, userFavs).subscribe();
   }

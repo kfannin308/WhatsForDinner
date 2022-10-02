@@ -59,10 +59,10 @@ export class RecipeListComponent implements OnInit {
   //  this.favoritesService.DeleteFromFavorites(this.currUserID, _recipeID);
   //  console.log("works!");
   //}
-  /*favgrid changes */
-  public updateFavorites(_recipeID: number, isChecked: boolean, /*,recipeTitle: string, recipeImage: string*/) {
+ 
+  public updateFavorites(_recipeID: number, isChecked: boolean) {
     if (isChecked == true) {
-      this.favoritesService.AddToFavorites(this.currUser.userID, _recipeID/*,recipeTitle: string, recipeImage: string*/ );
+      this.favoritesService.AddToFavorites(this.currUser.userID, _recipeID );
     }
     else {
       this.favoritesService.DeleteFromFavorites(this.currUser.userID, _recipeID);
