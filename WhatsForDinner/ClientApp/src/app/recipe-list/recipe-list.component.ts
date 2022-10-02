@@ -62,10 +62,10 @@ export class RecipeListComponent implements OnInit {
 
   public updateFavorites(_recipeID: number, isChecked: boolean) {
     if (isChecked == true) {
-      this.favoritesService.AddToFavorites(this.currUser.userID, _recipeID);
+      this.favoritesService.AddToFavorites(this.currUser.userID, _recipeID, this.title, this.image);
     }
     else {
-      this.favoritesService.DeleteFromFavorites(this.currUser.userID, _recipeID);
+      this.favoritesService.DeleteFromFavorites(this.currUser.userID, _recipeID, this.title, this.image);
     }
   }
 

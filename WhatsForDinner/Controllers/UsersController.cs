@@ -57,6 +57,23 @@ namespace WhatsForDinner.Controllers
             _usersDbContext.SaveChangesAsync();
         }
 
+        [HttpPost]
+        [Route("update")]
+        public void UpdateUser([FromBody] Users _updateUser)
+        {
+            var updateUser = _usersDbContext.Users.Where(U => U.email == _updateUser.email).FirstOrDefault();
+            if (updateUser != null)
+            {
+                updateUser.email = _updateUser.email;
+                updateUser.firstName = _updateUser.firstName;
+                updateUser.lastName = _updateUser.lastName;
+                updateUser.numberToFeed = _updateUser.numberToFeed;
+            }
+
+            _usersDbContext.Users.Update(updateUser);
+            _usersDbContext.SaveChangesAsync();
+        }
+
         public class RegisterUserParams
         {
             public string email { get; set;}

@@ -23,18 +23,22 @@ export class FavoritesService {
     return favorites;
   }
 
-  public AddToFavorites(userID: number, recipeID: number) {
+  public AddToFavorites(userID: number, recipeID: number, title: string, image: string) {
     let userFavs: FavoritesArgs = new FavoritesArgs();
     userFavs.recipeID = recipeID;
     userFavs.userID = userID;
+    userFavs.title = title;
+    userFavs.image = image;
     let apiURL: string = this.baseUrl + "favorites/addtofavorites";
     this.httpClient.post(apiURL, userFavs).subscribe();
   }
 
-  public DeleteFromFavorites(userID: number, recipeID: number) {
+  public DeleteFromFavorites(userID: number, recipeID: number, title: string, image: string) {
     let userFavs: FavoritesArgs = new FavoritesArgs();
     userFavs.recipeID = recipeID;
     userFavs.userID = userID;
+    userFavs.title = title;
+    userFavs.image = image;
     let apiURL: string = this.baseUrl + "favorites/deletefavorites";
     this.httpClient.post(apiURL, userFavs).subscribe();
   }
@@ -44,6 +48,8 @@ export class FavoritesService {
 export class FavoritesArgs {
   recipeID: number;
   userID: number;
+  title: string;
+  image: string;
 }
 
 export interface Favorites {

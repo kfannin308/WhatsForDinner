@@ -16,11 +16,17 @@
   <h2>Welcome to your favorites {{currentUser.firstName}}!</h2>
   <div *ngIf="favorites">
     <div *ngFor="let favorite of favorites">
+      <h3>Title: {{favorite.title}}</h3>
+      <br />
+      <h3>Image: {{favorite.image}}</h3>
+      <br />
       <h3>Favorite ID: {{favorite.favoriteID}} </h3>
       <br />
       <h3>Recipe ID: {{favorite.recipeID}}</h3>
       <br />
       <h3>User ID: {{favorite.userID}}</h3>
+      <br />
+      <br />
     </div>
 
   </div>
