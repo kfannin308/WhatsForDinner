@@ -41,6 +41,7 @@ export class UsersService {
 
   public removeCurrentUser(): void {
     this.currentUserStream.next(null);
+
   }
 
   public RegisterUser(user: RegisterUserArgs) {
@@ -68,6 +69,7 @@ export class UsersService {
   //Method is to set user to empty or null
   public Logout() {
     this.removeCurrentUser();
+
   }
 
   //loggedIn is assumed to be TRUE

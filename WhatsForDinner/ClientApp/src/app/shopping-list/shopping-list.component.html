@@ -1,34 +1,35 @@
 <h1 align="center">    ~ ~ ~ Shopping List ~ ~ ~ </h1>
 &nbsp;&nbsp;&nbsp;
 
-<!--input class="noprint" id="printpagebutton" type="button" value="Print Shopping List" onclick="window.print();return false;" /-->
+<!-- print button (uses bootstrap d-print-none class to hide the button when printing)</-->
 <div align=center>
 <input class="d-print-none" id="printpagebutton" type="button" value="Print Shopping List!"
        onclick="window.print();return false;" />
 </div>
+
+<!--header row-->
 <div align="center">
-  
   <table style="text-align:center " cellpadding="15">
     <tr>
       <th style="text-align:center"><u>Item</u></th>
       <th style="text-align:center"><u>Amount</u></th>
       <th style="text-align:center"><u>Aisle</u></th>
       <th class="d-print-none" style="text-align:center"><u>Remove</u></th>
-
-
     </tr>
+    <!-- list out shopping items-->
     <tr class="cart-item" *ngFor="let item of items">
 
       <td style="text-align:center">{{ item.name }}</td>
       <td style="text-align:center">{{item.amount}} {{item.unit}}</td>
       <td style="text-align:center">{{item.aisle}} </td>
-
+      <!-- remove button -->
       <td><button class="d-print-none" id="removebutton" (click)="removeFromList(items, item)"><b>Remove</b></button></td>
 
     </tr>
   </table>
 </div>
 
+<!--total at bottom-->
 <p align="center">
 Total Items: {{this.items.length}}
 </p>

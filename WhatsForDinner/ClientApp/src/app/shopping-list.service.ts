@@ -6,8 +6,6 @@ import { Ingredients } from './services/recipe.service';
   providedIn: 'root'
 })
 export class ShoppingListService {
-
-
   constructor() { }
   items: Ingredients[] = [];
 
@@ -25,14 +23,20 @@ export class ShoppingListService {
     if (!found) {
       this.items.push(ingredient);
     }
-    
   }
+
+  /* clear list when logging out */
+  clearItems() {
+    console.log("hit clearItems");
+      this.items= [];
+      return this.items;
+  }
+
+  /*get shopping list */
   getItems() {
     console.log("hit getItems");
     return this.items;
-
   }
-
 }
 
 export class ShoppingList {
