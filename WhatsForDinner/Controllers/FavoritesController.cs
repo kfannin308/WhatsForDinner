@@ -44,7 +44,9 @@ namespace WhatsForDinner.Controllers
             var addFav = new FavoritesParams()
             {
                 recipeID = _addFavorite.recipeID,
-                userID = _addFavorite.userID 
+                userID = _addFavorite.userID,
+                Title = _addFavorite.Title,
+                Image = _addFavorite.Image,
             };
 
             var userFavs = ViewFavorites(_addFavorite.userID).ToArray();
@@ -72,6 +74,9 @@ namespace WhatsForDinner.Controllers
         {
             public int recipeID { get; set; }
             public int userID { get; set; }
+            public string Title { get; set; }
+            public string Image { get; set; }
+
         }
 
         [HttpPost]
