@@ -23,11 +23,10 @@
     <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="irish">
     <label for="irish">Irish</label>&nbsp;&nbsp;
 
-    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 
-    <label for="maxReadyTime (minutes)"><b>Max Ready Time:</b></label>
-    <input type="text" [(ngModel)]="maxReadyTime" name="maxReadyTime" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button (click)=" getListwithFilter(myType,myWordSearch,myCuisine,maxReadyTime,maxCalories)">Search for Recipes</button>&nbsp;&nbsp;&nbsp;
+
+    <button (click)=" getListwithFilter(myType,myWordSearch,myCuisine,maxReadyTime)">Search for Recipes</button>&nbsp;&nbsp;&nbsp;
     <!--button (click)="getMockRecipes()">Get Mock Data</button-->
     <br /><br />
     <b>Meal Type (choose one):</b>&nbsp;&nbsp;
@@ -45,8 +44,6 @@
     <label for="breakfast">Breakfast</label>&nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 
-    <label for="maxCalories"><b>Max Calories:</b></label>
-    <input type="text" [(ngModel)]="maxCalories" name="maxCalories" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button (click)="clearRecipeList()">
       Clear Recipes List
     </button>
@@ -56,7 +53,9 @@
   <br />
 
   <label for="wordSearch"><b>Find Recipes by Word: </b> </label>
-  <input [(ngModel)]="myWordSearch">
+  <input [(ngModel)]="myWordSearch">   &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  <label for="maxReadyTime (minutes)"><b>Max Ready Time:</b></label>
+  <input type="text" [(ngModel)]="maxReadyTime" name="maxReadyTime" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
@@ -72,7 +71,7 @@
   <br /><br />
   <hr style="height:3px; color:black;" />
 
-  <div class="d-flex flex-row flex-wrap" >
+  <div class="d-flex flex-row flex-wrap">
     <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
                      [title]=currLoadedRecipe.title
                      [id]=currLoadedRecipe.id

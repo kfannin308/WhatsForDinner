@@ -29,7 +29,8 @@ export class RecipeDetailsComponent implements OnInit {
   @Input() public image: string = ""
   @Input() public summary: string = "";
   @Input() public cuisines: string = "";
-  @Input() public dishTypes: string = ""
+  @Input() public dishTypes: string = "";
+ 
 
   ngOnInit(): void {
     

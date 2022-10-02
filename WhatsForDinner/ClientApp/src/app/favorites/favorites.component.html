@@ -1,4 +1,4 @@
-<!--div *ngIf="currentUser != null || currentUser != undefined">
+<div *ngIf="currentUser != null || currentUser != undefined">
   <h2>Welcome to your favorites {{currentUser.firstName}}!</h2>
 
   <div class="d-flex flex-row flex-wrap">
@@ -11,8 +11,8 @@
 
     </app-recipe-list>
   </div>
-  </div-->
-<div *ngIf="currentUser != null || currentUser != undefined">
+  </div>
+<!--div *ngIf="currentUser != null || currentUser != undefined">
   <h2>Welcome to your favorites {{currentUser.firstName}}!</h2>
   <div *ngIf="favorites">
     <div *ngFor="let favorite of favorites">
@@ -30,7 +30,7 @@
     </div>
 
   </div>
-</div>
+</div-->
 <div *ngIf="currentUser == null || favorites == null">
   <h3>
     You have no favorites, look around for something good slacker.
