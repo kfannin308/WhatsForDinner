@@ -5,7 +5,6 @@
 
   <h2 align="center"><u><b>Search Recipes</b></u></h2>
 
-
   <form action="/action_page.php">
     <b>Cuisine (choose one):</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="american">
@@ -48,29 +47,23 @@
       Clear Recipes List
     </button>
 
-    <!--button (click)="getRandomRecipes()">Get Random Recipes</button-->
   </form>
   <br />
 
   <label for="wordSearch"><b>Find Recipes by Word: </b> </label>
   <input [(ngModel)]="myWordSearch">   &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
   <label for="maxReadyTime (minutes)"><b>Max Ready Time:</b></label>
+  <!--note for next line
+    The ngModel directive is a directive that is used to bind the values of the HTML controls
+    (input, select, and textarea) or any custom form controls, and stores the required user value
+    in a variable and we can use that variable whenever we require that value. It also is used during
+    form validations. -->
   <input type="text" [(ngModel)]="maxReadyTime" name="maxReadyTime" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-  &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-
-
+ 
   <br /><br />
   <hr style="height:3px; color:black;" />
 
+  <!-- using bootstrap d-flex class for grid layout -->
   <div class="d-flex flex-row flex-wrap">
     <app-recipe-list *ngFor="let currLoadedRecipe of loadedRecipes.results"
                      [title]=currLoadedRecipe.title
@@ -79,9 +72,6 @@
 
     </app-recipe-list>
   </div>
-
-
-
 
 </body>
 </html>

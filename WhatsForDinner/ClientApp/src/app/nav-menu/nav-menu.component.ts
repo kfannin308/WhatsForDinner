@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Users, UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
+import { ShoppingListService} from '../shopping-list.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -12,7 +13,7 @@ export class NavMenuComponent implements OnInit {
   currentUser: Users;
   _userService: UsersService;
   
-  constructor(userService: UsersService, private _router: Router) {
+  constructor(userService: UsersService, private _router: Router, private shoppingListService: ShoppingListService) {
     this._userService = userService;
    
   }
@@ -24,11 +25,12 @@ export class NavMenuComponent implements OnInit {
   }
 
   logOut() {
+    this.shoppingListService.clearItems;
     this._userService.currentUserStream.next(null);
-    this.currentUser = undefined;
+    this.currentUser = undefined;    
     this._router.navigateByUrl("/");
   }
-
+  
   collapse() {
     this.isExpanded = false;
   }

@@ -2,13 +2,9 @@ import { Injectable, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
-
-
 
 export class RecipesService {
 
@@ -22,24 +18,18 @@ export class RecipesService {
   @Output() newRandomRecipesAvailableEvent = new EventEmitter<RecipeResults>();
   @Output() newMockDataAvailableEvent = new EventEmitter<RecipeResults>();
  
-
-
   private storedRecipeInfos: RecipeResults | any;
   private storedRandomInfos: RecipeInfo | any;
   private storedSingleRecipe: RecipeDetails | any;
 
-  // private storedRecipeResults: RecipeResults = new RecipeResults;
-  
-
- /*
-  public GetInfoFromServer() {
-    let apiUrl: string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1528a19c369845658e657d2c1ccbdd87&number=9";
-    this.httpClient.get<RecipeResults>(apiUrl).subscribe((gotData) => {
-      console.log("Hit GetInfoFromServer");
-      this.storedRecipeInfos = gotData;
-      this.newRecipesAvailableEvent.emit(this.storedRecipeInfos);
-    });
-  }*/
+  /* we are suing spoonaculars api https://spoonacular.com/food-api/docs#Search-Recipes-Complex
+  * It returns its results in a json format 
+  * this call only returns a small subset of data: id, title, image and image type
+  * we authenticate using an apikey(the strange number you see in the middle of our url below)
+  * we store these results in  RecipeInfos (see class below)*/
+  /* returnsResults with a count wrapped around the RecipeInfos details */
+  /* click here to see how results are sent:
+   * https://api.spoonacular.com/recipes/complexSearch?apiKey=1528a19c369845658e657d2c1ccbdd87&number=40 */
 
   public GetListWithFilter(myFilterString: string) {
     let apiUrl: string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=1528a19c369845658e657d2c1ccbdd87&number=40" + myFilterString;
@@ -50,21 +40,20 @@ export class RecipesService {
     });
   }
 
-  public GetListRandom() {
-    let apiUrl: string = "https://api.spoonacular.com/recipes/random?apiKey=1528a19c369845658e657d2c1ccbdd87&number=9";
-    console.log("apiUrl:" + apiUrl);
-    this.httpClient.get<RecipeInfo>(apiUrl).subscribe((gotData) => {
-      this.storedRandomInfos = gotData;
-      console.log("storedRandomInfos:" + this.storedRandomInfos);
-      this.newRandomRecipesAvailableEvent.emit(this.storedRandomInfos);
-      console.log("results: " + this.storedRandomInfos.length);
-    });
-    console.log("end of getlistrandom: ");
-  }
-
   public id: number = 0;
-  
-  
+
+  /* this is the api call to get extended details on when the user clicks the 'get details' button on the recipe list
+   * we are suing spoonaculars api https://spoonacular.com/food-api/docs#Get-Recipe-Information
+   * we pass the id in the middle of the url
+  * It returns its results in a json format 
+  * this call only returns a small subset of data: id, title, image and image type
+  * we authenticate using an apikey(the strange number you see in the middle of our url below)
+  * we store these results in  RecipeDetails (see class below)
+  * we store the following fields even though much more details are sent in the json results:
+  * id, title, readyInMinutes, servings, sourceUrl, image, summary, extendedIngredients, cuisines, and dishTypes*/
+  /* click here to see the results
+   * https://api.spoonacular.com/recipes/716426/information?apiKey=1528a19c369845658e657d2c1ccbdd87&includeNutrition=true */
+
   public GetRecipeDetails(id: number) {
     let thisId = id.toString();
     let apiURL: string = "https://api.spoonacular.com/recipes/" + thisId + "/information?apiKey=1528a19c369845658e657d2c1ccbdd87&includeNutrition=true";
@@ -74,7 +63,8 @@ export class RecipesService {
       this.newDetailAvailableEvent.emit(this.storedSingleRecipe);
     });
   }
-  
+
+  /* this was used to get data when the spoonacular api was down for a few days so we could keep working 
   public GetMockList() {
     let apiUrl: string = "https://gcmock.free.beeceptor.com";
                           
@@ -83,19 +73,15 @@ export class RecipesService {
       this.storedRecipeInfos = gotData;
       this.newMockDataAvailableEvent.emit(this.storedRecipeInfos);
     }); 
-    
-    
 
-  }
+  } */
 
 }
 
 export class RecipeResults {
   public count: number = 0;
   public results: RecipeInfo[] = [];
-}
-
-    
+}   
  
 export class RecipeInfo {
   public id: number = 0;
