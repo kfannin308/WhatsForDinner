@@ -115,8 +115,7 @@ export class RecipeDetails {
   public extendedIngredients: Ingredients[] = [];
   public cuisines: string = "";
   public dishTypes: string = ""
-
-
+ 
 }
 
 export class Ingredients {

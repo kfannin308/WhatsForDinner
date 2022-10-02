@@ -30,7 +30,7 @@ export class SearchRecipesComponent implements OnInit {
   public restrictions: string = "";
   private filterString: string = "";
   public maxReadyTime: number = 0;
-  public maxCalories: number = 0;
+  
 
   @Input() public loadedDetails: RecipeDetails = new RecipeDetails();
 
@@ -49,11 +49,11 @@ export class SearchRecipesComponent implements OnInit {
   
   
 
-  public getListwithFilter(myType: string, wordSearch: string, cuisine: string, maxReadyTime: number, maxCalories: number) {
+  public getListwithFilter(myType: string, wordSearch: string, cuisine: string, maxReadyTime: number) {
     // The order is important here.  If we subscribe FIRST, we can guarantee we will receive
     // all data provided by the event.  If we subscribe SECOND, we may not.
 
-    console.log("filters: " + this.myType + "  " + this.myWordSearch + "  " + this.myCuisine + " " + this.maxReadyTime + " " + this.maxCalories);
+    console.log("filters: " + this.myType + "  " + this.myWordSearch + "  " + this.myCuisine + " " + this.maxReadyTime);
     if (!this.isNewFilteredRecipeAvailEventSubscribed) {
       this.thisRecipesService.newFilteredRecipesAvailableEvent.subscribe((recipes) => {
         this.loadedRecipes = recipes;
@@ -78,14 +78,10 @@ export class SearchRecipesComponent implements OnInit {
     if (this.maxReadyTime != 0) {
       this.filterString = this.filterString + "&maxReadyTime" + this.maxReadyTime;
     }
-    if (this.maxCalories != 0) {
-      this.filterString = this.filterString + "&maxCalories" + this.maxReadyTime;
-    }
     console.log("myType: " + this.myType);
     console.log("myCuisine: " + this.myCuisine);
     console.log("myWordSearch: " + this.myWordSearch);
     console.log("maxReadyTime: " + this.maxReadyTime);
-    console.log("maxCalories: " + this.maxCalories);
     console.log("FilterString: " + this.filterString);
     this.thisRecipesService.GetListWithFilter(this.filterString);
     this.myType = "";
