@@ -32,7 +32,7 @@ export class SearchRecipesComponent implements OnInit {
   public maxReadyTime: number = 0;
   
 
-  @Input() public loadedDetails: RecipeDetails = new RecipeDetails();
+  @Input() public loadedDetails: RecipeDetails = new RecipeDetails();   // this allows form data to be collected from the HTML. 
 
   constructor(private thisRecipesService: RecipesService, private favoritesService: FavoritesService, private usersService: UsersService) {
   }

@@ -20,14 +20,14 @@ namespace WhatsForDinner.Controllers
         [Route("test")]
         public Users[] Test()
         {
-            return _usersDbContext.Users.ToArray();
+            return _usersDbContext.Users.ToArray(); 
         }
 
         [HttpPost]
         [Route("login")]
         public Users Login([FromBody] LoginParams _loginParams)
         {
-            var userLogIn = _usersDbContext.Users.Where(u => u.email == _loginParams.email).FirstOrDefault();
+            var userLogIn = _usersDbContext.Users.Where(u => u.email == _loginParams.email).FirstOrDefault(); // this is where the data base is being accessed by Entity Framework by using DBContext. 
             if(userLogIn == null)
             {
                 return null;

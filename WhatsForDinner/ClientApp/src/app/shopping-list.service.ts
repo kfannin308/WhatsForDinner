@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Ingredients } from './services/recipe.service';
+import { Users, UsersService } from './services/users.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingListService {
-  constructor() { }
+
+  _userService: UsersService;
+
+  constructor(userService: UsersService) {
+    this._userService = userService;
+  }
   items: Ingredients[] = [];
 
   addToList(ingredient: Ingredients) {
@@ -31,11 +37,15 @@ export class ShoppingListService {
       this.items= [];
       return this.items;
   }
+  getItems(user: Users): Ingredients[] {
+    if (user != null || user != undefined) {
 
-  /*get shopping list */
-  getItems() {
-    console.log("hit getItems");
-    return this.items;
+      return this.items;
+    }
+    else {
+      return [];
+    }
+
   }
 }
 
