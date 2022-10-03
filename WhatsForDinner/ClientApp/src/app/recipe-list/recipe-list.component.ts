@@ -42,23 +42,6 @@ export class RecipeListComponent implements OnInit {
   }
 
  
-  /*
-  public addToList(ingredient: Ingredients) {
-    this.shoppingListService.addToList(this.loadedIngredients);
-    window.alert('Your ingredients have been added to the Shopping List! Total Items in Shopping List:' +
-      this.shoppingListService.items.length.toString());
-    console.log('Details Add - Cart Items Total: ' + this.shoppingListService.items.length.toString());
-  }
-  */
-  //public addToFavorites(_recipeID: number) {
-  //  this.favoritesService.AddToFavorites(this.currUserID, _recipeID);
-  //  console.log("works! " + _recipeID + " " + this.currUserID);
-  //}
-
-  //public deleteFromFavorites(_recipeID: number) {
-  //  this.favoritesService.DeleteFromFavorites(this.currUserID, _recipeID);
-  //  console.log("works!");
-  //}
  
   public updateFavorites(_recipeID: number, isChecked: boolean) {
     if (isChecked == true) {

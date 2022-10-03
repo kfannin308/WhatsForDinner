@@ -35,22 +35,19 @@ export class RecipeDetailsComponent implements OnInit {
   @Input() public cuisines: string = "";
   @Input() public dishTypes: string = "";
  
-
   ngOnInit(): void {
     this._userService.currentUserStream.subscribe((user: Users | null) => {   // we are using the userservice to subscribe to the current user stream which knows who the current user is to then set it to our instance variable this.currentUser
       if (user != null)
         this.currentUser = user;  // this initializing/setting the current user
     });
 
+    /* https://angular.io/api/router/ActivatedRouteSnapshot */
+    /* code below parses out id - copied from donut lab */
     let idString: string | null = "";
     idString = this._Activatedroute.snapshot.paramMap.get("id");
-    console.log("onInit: idstring =" + idString);
-    console.log(typeof Number(idString));
     this.id = Number.parseInt(idString!);
     console.log("onInit: ID =" + this.id);
     this.GetDetails();
-
-
   }
 
   public GetDetails() {

@@ -27,12 +27,13 @@ export class ShoppingListComponent implements OnInit {
   public findItem(myId: number) {
 
   }
+
   public getItems() {
     return this.shoppingListService.getItems(this.currentUser);
 
   }
-  public removeFromList(items: Ingredients[], item: Ingredients) {
 
+  public removeFromList(items: Ingredients[], item: Ingredients) {
     console.log("hit removeFromList code " + item.name);
     this.items = this.shoppingListService.getItems(this.currentUser);
     for (var i = 0; i < items.length; i++) {
@@ -45,6 +46,7 @@ export class ShoppingListComponent implements OnInit {
       }
     }
   }
+
   public printPage() {
     console.log("hit print");
     //Get the print and remove buttons and put it into a variable
@@ -60,10 +62,6 @@ export class ShoppingListComponent implements OnInit {
     printButton.style.visibility = 'visible';
     removeButton.style.visibility = 'visible';
   }
-
-  
-
-
 }
 
 

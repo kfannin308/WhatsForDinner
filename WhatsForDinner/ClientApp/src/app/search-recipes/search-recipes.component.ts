@@ -41,26 +41,25 @@ export class SearchRecipesComponent implements OnInit {
     
   }
 
+  /* clear search results */
   clearRecipeList() {
     this.loadedRecipes.results = [];
     
     return this.loadedRecipes;
   }
   
+  /* function called when search recipes button is click
+   it subscribes to the call to the api in the recipes service*/
   
-
   public getListwithFilter(myType: string, wordSearch: string, cuisine: string, maxReadyTime: number) {
     // The order is important here.  If we subscribe FIRST, we can guarantee we will receive
     // all data provided by the event.  If we subscribe SECOND, we may not.
 
     console.log("filters: " + this.myType + "  " + this.myWordSearch + "  " + this.myCuisine + " " + this.maxReadyTime);
+    /* figuring out the filters to add to url */
     if (!this.isNewFilteredRecipeAvailEventSubscribed) {
       this.thisRecipesService.newFilteredRecipesAvailableEvent.subscribe((recipes) => {
         this.loadedRecipes = recipes;
-//for (let currElementNo = 0; currElementNo < recipes.results.length; currElementNo++)
-         // this.loadedRecipes.results.push(recipes.results[currElementNo]);
-        //console.log("Data arrived!  We got " + recipes.results.length.toString() + " records.");
-
       })
       this.isNewFilteredRecipeAvailEventSubscribed = true;
     }
@@ -90,21 +89,7 @@ export class SearchRecipesComponent implements OnInit {
     this.filterString = "";
   }
 
-  public getRandomRecipes() {
-
-    if (!this.isNewRandomRecipeAvailEventSubscribed) {
-      console.log("Hit GetRandomRecipe");
-      this.thisRecipesService.newRandomRecipesAvailableEvent.subscribe((gotData) => {
-        for (let currElementNo = 0; currElementNo < gotData.results.length; currElementNo++)
-          this.loadedRecipes.results.push(gotData.results[currElementNo]);
-        console.log("Data arrived!  We got " + gotData.results.length.toString() + " records.");
-
-      })
-      this.isNewRandomRecipeAvailEventSubscribed = true;
-    }
-
-    this.thisRecipesService.GetListRandom();
-  }
+ /* used to get data when spoonacular's api was down 
   public getMockRecipes() {
     if (!this.isNewMockDataAvailEventSubscribed) {
       console.log("Hit getMockRecipes");
@@ -118,6 +103,6 @@ export class SearchRecipesComponent implements OnInit {
       this.isNewMockDataAvailEventSubscribed = true;
     }
     this.thisRecipesService.GetMockList();
-  }
+  }*/
   
 }

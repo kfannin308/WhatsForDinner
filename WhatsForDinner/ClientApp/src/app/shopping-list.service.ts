@@ -29,7 +29,13 @@ export class ShoppingListService {
     if (!found) {
       this.items.push(ingredient);
     }
-    
+  }
+
+  /* clear list when logging out */
+  clearItems() {
+    console.log("hit clearItems");
+      this.items= [];
+      return this.items;
   }
   getItems(user: Users): Ingredients[] {
     if (user != null || user != undefined) {
@@ -41,7 +47,6 @@ export class ShoppingListService {
     }
 
   }
-
 }
 
 export class ShoppingList {
