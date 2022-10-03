@@ -58,6 +58,20 @@ export class UsersService {
 
   }
 
+  public updateUser(user: RegisterUserArgs) {
+    let apiURL: string = this.baseUrl + "/users/update";
+    if (user.firstName != null && user.email != null && user.lastName != null && user.numberToFeed != null) {
+      this.httpClient.post(apiURL, user).subscribe(() => {
+        console.log("User Updated Successfully!");
+      });
+
+    }
+    else {
+      alert("User did NOT update successfully");
+    }
+
+  }
+
   public LoginUser(email: string) {
     let apiURL: string = this.baseUrl + "/users/login";
     this.httpClient.post<Users>(apiURL, email).subscribe((userResponse: Users) => {
@@ -69,7 +83,6 @@ export class UsersService {
   //Method is to set user to empty or null
   public Logout() {
     this.removeCurrentUser();
-
   }
 
   //loggedIn is assumed to be TRUE
@@ -106,3 +119,4 @@ export class UsersLoginEventArgs {
   public isLoggedIn: boolean = false;
  
 }
+

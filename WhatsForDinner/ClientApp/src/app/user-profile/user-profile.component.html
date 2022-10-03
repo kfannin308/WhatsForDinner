@@ -1,11 +1,5 @@
-<h1>User Profile</h1>
-
-<!--<p *ngFor="let currUser of newUsers">{{currUser.firstName}} {{currUser.userID}}</p>
-<br />
-<br />
-<br />-->
 <div *ngIf="currentUser != null || currentUser != undefined">
-  <h2>Welcome!</h2>
+  <h2>Welcome! {{currentUser.firstName}}</h2>
   <br />
   <br />
   <h3>Name: {{currentUser.firstName}} {{currentUser.lastName}}</h3>
@@ -13,4 +7,47 @@
   <h3>Email: {{currentUser.email}}</h3>
   <br />
   <h3>User ID: {{currentUser.userID}}</h3>
+</div>
+
+<br/>
+<br />
+<!--
+<script>
+  function toggle(update)
+  {
+    const element = document.getElementById(update);
+    if (element.style.display === "none") {
+      element.style.display = "block";
+    } else {
+      element.style.display = "none";
+    }
+  }
+</script> -->
+
+<div>
+
+  <br /><br />
+  <button id="toggler" onclick="toggle('update')">Update Profile</button>
+  <br />
+
+  <form id="update" [formGroup]="updateUserForm" (ngSubmit)="updateUser(updateUserForm.value)" class="ui form">
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="text" id="email" placeholder="email" formControlName="email" />
+    </div>
+    <div class="field">
+      <label for="firstname">First Name</label>
+      <input type="text" id="firstName" placeholder="Your First Name" formControlName="firstName" />
+    </div>
+    <div class="field">
+      <label for="lastname">Last Name</label>
+      <input type="text" id="lastName" placeholder="Your Last Name" formControlName="lastName" />
+    </div>
+    <div class="field">
+      <label for="numberToFeedInput">Number of Servings</label>
+      <input type="text" id="numberToFeed" placeholder="Number of Servings" formControlName="numberToFeed" />
+    </div>
+    <button type="submit" class="ui button">UPDATE</button>
+  </form>
+
 </div>
