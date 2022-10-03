@@ -37,6 +37,7 @@ namespace WhatsForDinner.Controllers
             public int userID { get; set; }
         }
 
+
         [HttpPost]
         [Route("addtofavorites")]
         public void AddToFavorites([FromBody] Favorites _addFavorite)
