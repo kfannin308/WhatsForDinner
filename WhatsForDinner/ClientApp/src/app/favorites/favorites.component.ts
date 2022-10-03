@@ -12,7 +12,7 @@ export class FavoritesComponent implements OnInit {
   private _favoriteService: FavoritesService;
   private _userService: UsersService;
   favorites: Favorites[] = [];
-  currentUser: Users | undefined;
+  currentUser: Users | undefined; // declaring instance variable. 
 
   constructor(favoriteService: FavoritesService, userService: UsersService, private thisRecipesService: RecipesService) {
     this._favoriteService = favoriteService;
@@ -22,9 +22,9 @@ export class FavoritesComponent implements OnInit {
   public loadedFavDetails: RecipeDetails = new RecipeDetails();
 
   async ngOnInit(): Promise<void> {
-    this._userService.currentUserStream.subscribe((user: Users | null) => {
+    this._userService.currentUserStream.subscribe((user: Users | null) => {   // we are using the userservice to subscribe to the current user stream which knows who the current user is to then set it to our instance variable this.currentUser
       if (user != null)
-        this.currentUser = user;
+        this.currentUser = user;  // this initializing/setting the current user
     })
     if (this.currentUser != null && this.currentUser.userID != null) {
       this.favorites = await this._favoriteService.GetFavoritesByUser(this.currentUser?.userID);

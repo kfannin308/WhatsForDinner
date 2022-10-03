@@ -2,6 +2,7 @@ import { Component, OnInit,Input, Output} from '@angular/core';
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingListService, ShoppingList } from '../shopping-list.service';
+import { Users, UsersService } from '../services/users.service';
 
 
 @Component({
@@ -11,9 +12,12 @@ import { ShoppingListService, ShoppingList } from '../shopping-list.service';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  constructor(private _Activatedroute: ActivatedRoute, private thisRecipesService: RecipesService,
-              private thisShoppingListService: ShoppingListService ) {
+  _userService: UsersService;
+  currentUser: Users;
 
+  constructor(private _Activatedroute: ActivatedRoute, private thisRecipesService: RecipesService,
+              private thisShoppingListService: ShoppingListService, userService: UsersService ) {
+    this._userService = userService;
   }
 
   public loadedDetails: RecipeDetails = new RecipeDetails();
@@ -33,7 +37,11 @@ export class RecipeDetailsComponent implements OnInit {
  
 
   ngOnInit(): void {
-    
+    this._userService.currentUserStream.subscribe((user: Users | null) => {   // we are using the userservice to subscribe to the current user stream which knows who the current user is to then set it to our instance variable this.currentUser
+      if (user != null)
+        this.currentUser = user;  // this initializing/setting the current user
+    });
+
     let idString: string | null = "";
     idString = this._Activatedroute.snapshot.paramMap.get("id");
     console.log("onInit: idstring =" + idString);
