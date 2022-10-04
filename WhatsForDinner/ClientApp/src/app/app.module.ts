@@ -26,7 +26,7 @@ import { FavoritesService } from './services/favorites.service';
 import { RecipesService } from './services/recipe.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle'; 
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { ShoppingListService, ShoppingList } from './shopping-list.service';
+import { ShoppingListService, ShoppingList } from './services/shopping-list.service';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Users, UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
-import { ShoppingListService} from '../shopping-list.service';
+import { ShoppingListService} from '../services/shopping-list.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -25,7 +25,7 @@ export class NavMenuComponent implements OnInit {
   }
 
   logOut() {
-    this.shoppingListService.clearItems;
+    this.shoppingListService.clearShoppingList;
     this._userService.currentUserStream.next(null);
     this.currentUser = undefined;    
     this._router.navigateByUrl("/");

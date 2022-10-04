@@ -3,8 +3,10 @@
 
 <!-- print button (uses bootstrap d-print-none class to hide the button when printing)</-->
 <div align=center>
-<input class="d-print-none" id="printpagebutton" type="button" value="Print Shopping List!"
-       onclick="window.print();return false;" />
+  <input class="d-print-none" id="clearListBtn" type="button" value="Clear Shopping List!"
+         (click)="clearList()" /> &nbsp;&nbsp;
+  <input class="d-print-none" id="printpagebutton" type="button" value="Print Shopping List!"
+         onclick="window.print();return false;" />
 </div>
 
 <!--header row-->

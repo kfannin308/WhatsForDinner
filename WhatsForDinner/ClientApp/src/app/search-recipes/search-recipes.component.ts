@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 //import { CartService } from '../cart.service';
 
-import { ShoppingListService, ShoppingList } from '../shopping-list.service';
+import { ShoppingListService, ShoppingList } from '../services/shopping-list.service';
 import { RecipesService, RecipeDetails, RecipeInfo, RecipeResults } from '../services/recipe.service';
 import { FavoritesService } from 'src/app/services/favorites.service'
 import { UsersService } from '../services/users.service'

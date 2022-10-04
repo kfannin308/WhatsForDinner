@@ -4,6 +4,7 @@ import { AppSettings } from '../constants/appsettings';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { User } from 'oidc-client';
 
+
 @Injectable({
   providedIn: 'root'
 })
