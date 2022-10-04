@@ -1,6 +1,16 @@
 .header {
   
-  font-family: Garamond;
+  font-family: sans-serif;
   color: blue;
   font-size: 50px;
+}
+.imgs{
+    width: 225px;
+    height: 225px;
+    float: right;
+}
+textFont {
+  font-family: Garamond;
+  font-size: 35px
+  
 }

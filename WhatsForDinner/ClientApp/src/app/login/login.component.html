@@ -3,27 +3,32 @@
   <h2 class="ui header">
     Login
   </h2>
+  <img src="assets/dish2.png" class="imgs">
+  <br /><br />
   <form [formGroup]="loginUserForm"
         (ngSubmit)="onSubmit(loginUserForm.value)"
         class="ui form">
     <div class="field">
-      <label for="email">
-        Email 
+      <label class="label" for="email">
+        Email: &nbsp;
       </label>
       <input type="text"
              id="email"
              placeholder="email"
              formControlName="email" />
+      &nbsp;&nbsp;
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <button type="submit" class="ui button">Submit</button>
   </form>
 </div>
 <div>
-  <h2>
-    If your a new to this please click 
+  <br />
+  <br />
+  <p class="label">
+    If your are a new user 
 
-    <button class="btn btn-primary" routerLink="/register"> here to register. </button>
-  </h2>
+    <button class="btn btn-primary" routerLink="/register"> Click Here to Register </button>
+  </p>
 </div>
-
-<button class="btn btn-primary" (click)="logOut()"> Log Out. </button>
+<br />
+<!--button class="btn btn-primary" (click)="logOut()"> Log Out </button-->

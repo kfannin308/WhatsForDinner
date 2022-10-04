@@ -3,9 +3,9 @@
 <html>
 <body>
 
-  <h2 class='header' align="center"><u><b>Search Recipes</b></u></h2>
-
-  <form action="/action_page.php">
+  <h2 class='header' align="center"><u>Search Recipes</u></h2>
+ 
+  <form action="/action_page.php" style="font-family:sans-serif; font-size:20px">
     <b>Cuisine (choose one):</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="radio" [(ngModel)]="myCuisine" name="cuisine" value="american">
     <label for="american">American</label>&nbsp;&nbsp;
@@ -59,7 +59,7 @@
     in a variable and we can use that variable whenever we require that value. It also is used during
     form validations. -->
   <input type="text" [(ngModel)]="maxReadyTime" name="maxReadyTime" size="4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 
+
   <br /><br />
   <hr style="height:3px; color:black;" />
 
