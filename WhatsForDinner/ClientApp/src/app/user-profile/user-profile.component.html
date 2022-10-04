@@ -27,14 +27,14 @@
 <div>
 
   <br /><br />
-  <button id="toggler" onclick="toggle('update')">Update Profile</button>
+  <button id="toggler" (click)="toggle()">Update Profile</button>
   <br />
 
-  <form id="update" [formGroup]="updateUserForm" (ngSubmit)="updateUser(updateUserForm.value)" class="ui form">
-    <div class="field">
+  <form [class]="showForm" id="update" [formGroup]="updateUserForm" (ngSubmit)="updateUser(updateUserForm.value)" class="ui form">
+    <!--<div class="field">
       <label for="email">Email</label>
       <input type="text" id="email" placeholder="email" formControlName="email" />
-    </div>
+    </div> -->
     <div class="field">
       <label for="firstname">First Name</label>
       <input type="text" id="firstName" placeholder="Your First Name" formControlName="firstName" />
@@ -47,7 +47,7 @@
       <label for="numberToFeedInput">Number of Servings</label>
       <input type="text" id="numberToFeed" placeholder="Number of Servings" formControlName="numberToFeed" />
     </div>
-    <button type="submit" class="ui button">UPDATE</button>
+    <button type="submit" class="ui button">SUBMIT</button>
   </form>
 
 </div>

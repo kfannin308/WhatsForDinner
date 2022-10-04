@@ -28,6 +28,15 @@ export class RegisterComponent implements OnInit {
   // the value is taken from the form builder in Angular
   onSubmit(value: RegisterUserArgs): void {
     this._userService.RegisterUser(value);
+    //let loginParam: Object = new Object({ email: value.email });
+    //this._userService.LoginUser(value.email);
+    //let autoLogin: AutoLogin = new AutoLogin();
+    //autoLogin.email = value.email;
+    //this._userService.LoginUser(autoLogin.email);
     this._router.navigateByUrl("/")
   }
 }
+
+//class AutoLogin {
+//  public email: string = "";
+//}

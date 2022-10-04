@@ -25,6 +25,9 @@ export class UserProfileComponent /*implements OnInit*/
 
   currentUser: Users | undefined;
   updateUserForm: FormGroup;
+  showForm: string = "Hidden";
+
+
 
   ngOnInit(): void {
     this.userService.currentUserStream.subscribe((user: Users | null) => {
@@ -46,7 +49,17 @@ export class UserProfileComponent /*implements OnInit*/
     //this._router.navigateByUrl("/login")
   }
 
-
+  toggle()
+  {
+    if (this.showForm == "Display")
+    {
+      this.showForm = "Hidden";
+    }
+    else
+    {
+      this.showForm = "Display";
+    }
+  }
       
 
   public updateUser(userchange: Users)
