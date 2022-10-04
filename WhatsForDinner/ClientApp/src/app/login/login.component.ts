@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from '../services/users.service';
+import { ShoppingListService } from '../services/shopping-list.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   loginUserForm: FormGroup;
   _userService: UsersService;
-  constructor(userService: UsersService, fb: FormBuilder, private _router: Router) {
+  constructor(userService: UsersService, fb: FormBuilder, private _router: Router,
+              private shoppingListService: ShoppingListService  ) {
     this._userService = userService;
     this.loginUserForm = fb.group({
      
@@ -31,5 +33,9 @@ export class LoginComponent implements OnInit {
 
   logOut() {
     this._userService.Logout();
+    this.shoppingListService.clearShoppingList();
+    this.shoppingListService.getItems;
+    
+    
   }
 }

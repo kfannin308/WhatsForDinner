@@ -35,7 +35,8 @@ export class ShoppingListService {
   clearShoppingList() {
     console.log("hit clearShoppingList");
       this.items= [];
-      return this.items;
+    return this.items;
+
   }
 
   getItems(user: Users): Ingredients[] {
@@ -46,7 +47,7 @@ export class ShoppingListService {
     else {
       return [];
     }
-
+    console.log("Hit getItems");
   }
 }
 

@@ -25,7 +25,8 @@ export class NavMenuComponent implements OnInit {
   }
 
   logOut() {
-    this.shoppingListService.clearShoppingList;
+    this.shoppingListService.clearShoppingList();
+    this.shoppingListService.getItems;
     this._userService.currentUserStream.next(null);
     this.currentUser = undefined;    
     this._router.navigateByUrl("/");
