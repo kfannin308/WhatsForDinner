@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Ingredients } from './services/recipe.service';
-import { Users, UsersService } from './services/users.service';
+import { Ingredients } from '../services/recipe.service';
+import { Users, UsersService } from '../services/users.service';
 
 
 @Injectable({
@@ -32,11 +32,13 @@ export class ShoppingListService {
   }
 
   /* clear list when logging out */
-  clearItems() {
-    console.log("hit clearItems");
+  clearShoppingList() {
+    console.log("hit clearShoppingList");
       this.items= [];
-      return this.items;
+    return this.items;
+
   }
+
   getItems(user: Users): Ingredients[] {
     if (user != null || user != undefined) {
 
@@ -45,7 +47,7 @@ export class ShoppingListService {
     else {
       return [];
     }
-
+    console.log("Hit getItems");
   }
 }
 

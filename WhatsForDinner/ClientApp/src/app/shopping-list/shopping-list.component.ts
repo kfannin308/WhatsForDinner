@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RecipesService, RecipeDetails, RecipeInfo, RecipeResults, Ingredients } from '../services/recipe.service';
 import { Users, UsersService } from '../services/users.service';
-import { ShoppingListService } from '../shopping-list.service';
+import { ShoppingListService } from '../services/shopping-list.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-list',
@@ -13,7 +14,7 @@ export class ShoppingListComponent implements OnInit {
   items: Ingredients[];
   _userService: UsersService;
   currentUser: Users;
-  constructor(private shoppingListService: ShoppingListService, userService: UsersService) {
+  constructor(private shoppingListService: ShoppingListService, userService: UsersService, private router: Router) {
     this._userService = userService;
   }
 
@@ -30,7 +31,11 @@ export class ShoppingListComponent implements OnInit {
 
   public getItems() {
     return this.shoppingListService.getItems(this.currentUser);
+  }
 
+  public clearList() {
+    this.shoppingListService.clearShoppingList();
+    this.items = this.getItems();
   }
 
   public removeFromList(items: Ingredients[], item: Ingredients) {

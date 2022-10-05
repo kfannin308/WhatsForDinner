@@ -1,5 +1,6 @@
 <div *ngIf="currentUser != null || currentUser != undefined">
-  <h2>Welcome! {{currentUser.firstName}}</h2>
+  <h2 class="header">Welcome {{currentUser.firstName}}!</h2>
+  <img src="assets/dish1.png" class="imgs">
   <br />
   <br />
   <h3>Name: {{currentUser.firstName}} {{currentUser.lastName}}</h3>
@@ -27,27 +28,28 @@
 <div>
 
   <br /><br />
-  <button id="toggler" (click)="toggle()">Update Profile</button>
-  <br />
+  <button id="toggler" (click)="toggle()">Click Here to Update Profile</button>
+  <br /><br />
 
+  <div class="myForm">
   <form [class]="showForm" id="update" [formGroup]="updateUserForm" (ngSubmit)="updateUser(updateUserForm.value)" class="ui form">
     <!--<div class="field">
       <label for="email">Email</label>
       <input type="text" id="email" placeholder="email" formControlName="email" />
     </div> -->
     <div class="field">
-      <label for="firstname">First Name</label>
+      <label for="firstname">First Name:&nbsp;</label>
       <input type="text" id="firstName" placeholder="Your First Name" formControlName="firstName" />
     </div>
     <div class="field">
-      <label for="lastname">Last Name</label>
+      <label for="lastname">Last Name:&nbsp;</label>
       <input type="text" id="lastName" placeholder="Your Last Name" formControlName="lastName" />
     </div>
     <div class="field">
-      <label for="numberToFeedInput">Number of Servings</label>
+      <label for="numberToFeedInput">Number of Servings:&nbsp;</label>
       <input type="text" id="numberToFeed" placeholder="Number of Servings" formControlName="numberToFeed" />
     </div>
-    <button type="submit" class="ui button">SUBMIT</button>
+    <button type="submit"  class="btn-primary">SUBMIT</button>
   </form>
-
+</div>
 </div>

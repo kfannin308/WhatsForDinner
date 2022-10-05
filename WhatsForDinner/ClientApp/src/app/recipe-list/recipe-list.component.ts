@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
-import { ShoppingListService, ShoppingList} from '../shopping-list.service';
+import { ShoppingListService, ShoppingList} from '../services/shopping-list.service';
 import { Ingredients } from '../services/recipe.service';
 import { Favorites, FavoritesService } from 'src/app/services/favorites.service'
 import { Users, UsersService } from '../services/users.service'
