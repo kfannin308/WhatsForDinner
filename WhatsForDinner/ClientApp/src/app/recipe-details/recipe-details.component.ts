@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, Output} from '@angular/core';
+import { Component, OnInit,Input, Output, Inject} from '@angular/core';
 import { RecipesService, RecipeInfo, RecipeResults, RecipeDetails } from '../services/recipe.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShoppingListService, ShoppingList } from '../services/shopping-list.service';
@@ -16,7 +16,7 @@ export class RecipeDetailsComponent implements OnInit {
   currentUser: Users;
 
   constructor(private _Activatedroute: ActivatedRoute, private thisRecipesService: RecipesService,
-              private thisShoppingListService: ShoppingListService, userService: UsersService ) {
+    private thisShoppingListService: ShoppingListService, userService: UsersService, @Inject('BASE_URL') baseUrl: string ) {
     this._userService = userService;
   }
 

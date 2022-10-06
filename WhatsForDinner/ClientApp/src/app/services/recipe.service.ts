@@ -1,4 +1,4 @@
-import { Injectable, Input, Output, EventEmitter } from '@angular/core';
+import { Injectable, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class RecipesService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     console.log(" Recipes Service Created");
   }
 

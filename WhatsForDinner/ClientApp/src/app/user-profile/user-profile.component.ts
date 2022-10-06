@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'oidc-client';
 import { Users, UsersService } from '../services/users.service';
@@ -13,7 +13,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class UserProfileComponent /*implements OnInit*/
 {
 
-  constructor(formbuilder: FormBuilder, private userService: UsersService, private _router: Router)
+  constructor(formbuilder: FormBuilder, private userService: UsersService, private _router: Router,
+    @Inject('BASE_URL') baseUrl: string  )
   {
     this.updateUserForm = formbuilder.group({
       firstName: new FormControl(),

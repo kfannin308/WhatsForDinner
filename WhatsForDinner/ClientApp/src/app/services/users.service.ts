@@ -9,8 +9,8 @@ import { User } from 'oidc-client';
   providedIn: 'root'
 })
 export class UsersService {
-  constructor(private httpClient: HttpClient) {
-
+  constructor(private httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+   
   }
 
   @Output() newUsersAvailableEvent = new EventEmitter<Users[]>();
@@ -18,7 +18,7 @@ export class UsersService {
   @Output() loginChangeEvent = new EventEmitter<UsersLoginEventArgs>();
   // instance variables below here. 
   appSettings: AppSettings = new AppSettings();
-  baseUrl: string = this.appSettings.baseUrl;
+  //baseUrl: string = this.appSettings.baseUrl;
   activeUser: Users;
   // currentUserStream is an observable used to publish/broadcast a current user to a subscriber.
   currentUserStream: Subject<Users | null> = new BehaviorSubject<Users | null>(null);// way to store an stream current user.
@@ -46,7 +46,8 @@ export class UsersService {
   }
 
   public RegisterUser(user: RegisterUserArgs) {
-    let apiURL: string = this.baseUrl + "/users/register";
+    //let apiURL: string = this.baseUrl + "/users/register";
+    let apiURL: string = "/users/register";
     if (user.firstName != null && user.email != null && user.lastName != null && user.numberToFeed != null) {
       this.httpClient.post(apiURL, user).subscribe(() => {
         console.log("register user successful");
@@ -60,7 +61,8 @@ export class UsersService {
   }
 
   public updateUser(user: RegisterUserArgs) {
-    let apiURL: string = this.baseUrl + "/users/update";
+    //let apiURL: string = this.baseUrl + "/users/update";
+    let apiURL: string = "/users/update";
     if (user.firstName != null && user.email != null && user.lastName != null && user.numberToFeed != null) {
       this.httpClient.post(apiURL, user).subscribe(() => {
         console.log("User Updated Successfully!");
@@ -74,7 +76,8 @@ export class UsersService {
   }
 
   public LoginUser(email: string) {
-    let apiURL: string = this.baseUrl + "/users/login";
+    //let apiURL: string = this.baseUrl + "/users/login";
+    let apiURL: string = "/users/login";
     this.httpClient.post<Users>(apiURL, email).subscribe((userResponse: Users) => {
       this.setCurrentUser(userResponse);
 

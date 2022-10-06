@@ -7,18 +7,21 @@ import { UsersService, Users } from 'src/app/services/users.service'
   providedIn: 'root'
 })
 export class FavoritesService {
-  constructor(private httpClient: HttpClient, private usersService: UsersService, @Inject('BASE_URL') baseUrl: string) {
-    this.baseUrl = baseUrl;
+  constructor(private httpClient: HttpClient, private usersService: UsersService,
+    @Inject('BASE_URL') baseUrl: string) {
+
+    //this.baseUrl = baseUrl;
   }
 
-  baseUrl: string = ''
+  //baseUrl: string = ''
   appSettings: AppSettings = new AppSettings();
 
   private storedFavorites: Favorites[] | any;
 
   public async GetFavoritesByUser(userId: number): Promise<Favorites[]> {
     let localThis: FavoritesService = this;
-    let apiURL: string = localThis.appSettings.baseUrl + "/favorites/viewfavorites?userID=" + userId.toString();
+    //let apiURL: string = localThis.appSettings.baseUrl + "/favorites/viewfavorites?userID=" + userId.toString();
+    let apiURL: string = "/favorites/viewfavorites?userID=" + userId.toString();
     let favorites: Favorites[] | undefined = await localThis.httpClient.get<Favorites[]>(apiURL).toPromise();
     return favorites;
   }
@@ -29,7 +32,8 @@ export class FavoritesService {
     userFavs.userID = userID;
     userFavs.title = title;
     userFavs.image = image;
-    let apiURL: string = this.baseUrl + "favorites/addtofavorites";
+    //let apiURL: string = this.baseUrl + "favorites/addtofavorites";
+    let apiURL: string = "/favorites/addtofavorites";
     this.httpClient.post(apiURL, userFavs).subscribe();
   }
 
@@ -39,7 +43,8 @@ export class FavoritesService {
     userFavs.userID = userID;
     userFavs.title = title;
     userFavs.image = image;
-    let apiURL: string = this.baseUrl + "favorites/deletefavorites";
+    //let apiURL: string = this.baseUrl + "favorites/deletefavorites";
+    let apiURL: string = "/favorites/deletefavorites";
     this.httpClient.post(apiURL, userFavs).subscribe();
   }
 }

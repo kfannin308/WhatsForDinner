@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterUserArgs, UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerUserForm: FormGroup;
   _userService: UsersService;
 
-  constructor(fb: FormBuilder, userService: UsersService, private _router: Router) {
+  constructor(fb: FormBuilder, userService: UsersService, private _router: Router, @Inject('BASE_URL') baseUrl: string) {
     this._userService = userService;
     this.registerUserForm = fb.group({
       firstName:  new FormControl(),
