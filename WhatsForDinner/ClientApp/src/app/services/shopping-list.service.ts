@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Ingredients } from '../services/recipe.service';
 import { Users, UsersService } from '../services/users.service';
 
@@ -10,7 +10,7 @@ export class ShoppingListService {
 
   _userService: UsersService;
 
-  constructor(userService: UsersService) {
+  constructor(userService: UsersService, @Inject('BASE_URL') baseUrl: string) {
     this._userService = userService;
   }
   items: Ingredients[] = [];

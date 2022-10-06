@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 //import { CartService } from '../cart.service';
 
@@ -34,7 +34,8 @@ export class SearchRecipesComponent implements OnInit {
 
   @Input() public loadedDetails: RecipeDetails = new RecipeDetails();   // this allows form data to be collected from the HTML. 
 
-  constructor(private thisRecipesService: RecipesService, private favoritesService: FavoritesService, private usersService: UsersService) {
+  constructor(private thisRecipesService: RecipesService, private favoritesService: FavoritesService,
+    private usersService: UsersService, @Inject('BASE_URL') baseUrl: string) {
   }
 
   ngOnInit(): void {

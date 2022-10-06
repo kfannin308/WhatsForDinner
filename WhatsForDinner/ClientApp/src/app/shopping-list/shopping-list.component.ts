@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { RecipesService, RecipeDetails, RecipeInfo, RecipeResults, Ingredients } from '../services/recipe.service';
 import { Users, UsersService } from '../services/users.service';
 import { ShoppingListService } from '../services/shopping-list.service';
@@ -14,7 +14,8 @@ export class ShoppingListComponent implements OnInit {
   items: Ingredients[];
   _userService: UsersService;
   currentUser: Users;
-  constructor(private shoppingListService: ShoppingListService, userService: UsersService, private router: Router) {
+  constructor(private shoppingListService: ShoppingListService, userService: UsersService,
+    private router: Router, @Inject('BASE_URL') baseUrl: string) {
     this._userService = userService;
   }
 

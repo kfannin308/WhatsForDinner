@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
@@ -21,7 +21,8 @@ export class RecipeListComponent implements OnInit {
   public userFavs: Favorites[] | any;
   currUser: Users;
   _userService: UsersService;
-  constructor(private thisRecipesService: RecipesService, private shoppingListService: ShoppingListService, private usersService: UsersService, private favoritesService: FavoritesService) {
+  constructor(private thisRecipesService: RecipesService, private shoppingListService: ShoppingListService, private usersService: UsersService,
+    private favoritesService: FavoritesService, @Inject('BASE_URL') baseUrl: string) {
     this._userService = usersService;
   }
   @Input() public id: number = 0;

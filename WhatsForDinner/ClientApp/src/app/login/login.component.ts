@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from '../services/users.service';
 import { ShoppingListService } from '../services/shopping-list.service';
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginUserForm: FormGroup;
   _userService: UsersService;
   constructor(userService: UsersService, fb: FormBuilder, private _router: Router,
-              private shoppingListService: ShoppingListService  ) {
+    private shoppingListService: ShoppingListService, @Inject('BASE_URL') baseUrl: string ) {
     this._userService = userService;
     this.loginUserForm = fb.group({
      

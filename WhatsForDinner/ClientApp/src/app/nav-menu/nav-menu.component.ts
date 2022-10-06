@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Users, UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
 import { ShoppingListService} from '../services/shopping-list.service';
@@ -13,7 +13,8 @@ export class NavMenuComponent implements OnInit {
   currentUser: Users;
   _userService: UsersService;
   
-  constructor(userService: UsersService, private _router: Router, private shoppingListService: ShoppingListService) {
+  constructor(userService: UsersService, private _router: Router, private shoppingListService: ShoppingListService,
+    @Inject('BASE_URL') baseUrl: string) {
     this._userService = userService;
    
   }
